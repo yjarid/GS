@@ -1,0 +1,146 @@
+.recipeTitle {
+  color : $cardTitle;
+}
+
+.recipeTopcontainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.recipeInfo {
+    grid-column: 3/4;
+    color : $cardTitle;
+}
+
+.recipeMedia {
+  grid-column: 1/3;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+
+
+.recipeMainImage {
+  grid-column: 1/6;
+  grid-row: 1/4;
+  align-self: center;
+  justify-self: center;
+}
+
+.recipeImage {
+  grid-column: 6/9;
+  grid-row: 1/4;
+  display: grid;
+  grid-auto-rows: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.recipeImg{
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+}
+
+.recipeImg img {
+    position: absolute;
+    top: -2rem;
+}
+
+/* recipe Info section */
+
+.recipeInfo-section{
+  margin: 1rem 2rem;
+  width: 70%;
+  align-self: center;
+}
+
+.recipeRate, .recipeMade{
+  display: inline-block;
+  width: 40%;
+  padding: .3rem;
+  text-align: center;
+  margin-right: 1rem;
+  border: 2px solid purple;
+  color: purple;
+  border-radius: 2rem;
+}
+
+.recipeDesc{
+  margin-top: 2rem;
+  background-color: $pinkBG;
+  padding: 1rem;
+}
+
+.recipeRate:hover, .recipeMade:hover{
+background-color: purple;
+color: #fff;
+}
+
+
+.recipeVideo {
+  width: 60%;
+  padding: 1rem;
+  margin: 1.5rem auto;
+  background-color: #8AAF3E;
+  text-align: center;
+  color:#fff;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+}
+
+
+
+/* Body area : like Button ingredient ...*/
+
+.recipeMain {
+  display: grid;
+  grid-template-columns:  1fr 2fr 1fr;
+  grid-column-gap: 2rem;
+}
+
+.recipeIngredient {
+  h2 {
+    text-align: center;
+    color : $cardTitle;
+
+  }
+}
+
+.IngredientDetail {
+  background-color: #FFABD5;
+  border: 3px solid #ddd;
+  border-radius: 3rem;
+  ul {
+  padding-left: 1rem;
+    li {
+  font-size: 1rem;
+
+   margin : 1.2rem 1rem;
+   color : $ingredDetail;
+
+   }
+  }
+}
+
+.recipeDirection {
+  h2 {
+    text-align: center;
+    color : $cardTitle;
+  }
+}
+
+.recipeDirection {
+  text-align: justify;
+  line-height: 1.6;
+  color : $recipeDetail;
+}
+
+.similarRecipe {
+  h3 {
+    text-align: center;
+    color : $cardTitle;
+  }
+}

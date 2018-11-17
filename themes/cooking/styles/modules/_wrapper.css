@@ -1,0 +1,8 @@
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &--narrow {
+    max-width: 800px;
+  }
+}

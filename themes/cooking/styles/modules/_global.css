@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  margin : 0;
+  padding: 0;
+
+}
+
+html {
+    background-color: #fff;
+    font-family:  'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+section {
+  margin-bottom: 1rem ;
+  @mixin large {
+  margin-bottom: 2rem;
+  }
+
+
+}
+
+
+/* Block Container */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+}
+
+.container--narrow {
+  max-width: 960px;
+}

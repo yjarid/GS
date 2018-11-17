@@ -1,0 +1,11 @@
+ @define-mixin meduim {
+   @media (min-width: 500px) {
+     @mixin-content;
+   }
+ }
+
+ @define-mixin large {
+   @media (min-width: 900px) {
+     @mixin-content;
+   }
+ }
