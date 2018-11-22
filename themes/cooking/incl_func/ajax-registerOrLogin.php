@@ -53,6 +53,28 @@ function youssef_register(){
 
 if( defined( 'DOING_AJAX' ) && DOING_AJAX) {
 
+  // This field is set by the recaptcha widget if check is successful
+  $captcha_response = $_POST['captcha'] ;
+  // Verify the captcha response from Google
+  $response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify',
+        array(
+          'body' => array(
+              'secret' => get_option( 'personalize-login-recaptcha-secret-key' ),
+              'response' => $captcha_response
+          ) ) );
+
+    $success = false;
+    if ( $response && is_array( $response ) ) {
+        $decoded_response = json_decode( $response['body'] );
+        $success = $decoded_response->success;
+    }
+
+
+    if (!$success){
+      $data['login'] = 'false';
+      $data['html'] = 'recaptcha';
+    } else {
+
 $email = sanitize_email($_POST['email']);
 $explode = explode("@", $email );
 $name = $explode[0];
@@ -93,6 +115,7 @@ else if($user && !is_wp_error($user))
   $data['reg'] = 'true';
   $data['html'] = 'Registration successful, redirecting...';
 
+}
 }
 
 echo json_encode( $data );

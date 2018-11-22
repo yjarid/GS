@@ -15,7 +15,10 @@ final class Init
 		return [
 			Login::class,
 			Enqueue::class,
-			Register::class
+			Register::class,
+			LostPass::class,
+			ResetPass::class,
+			Redirect::class,
 		];
 	}
 

@@ -38,6 +38,17 @@ class Register extends BaseController{
         // Retrieve recaptcha key
         $attributes['recaptcha_site_key'] = get_option( 'personalize-login-recaptcha-site-key', null );
 
+        // Error messages
+          $errors = array();
+          if ( isset( $_REQUEST['errors'] ) ) {
+              $error_codes = explode( ',', $_REQUEST['errors'] );
+
+              foreach ( $error_codes as $code ) {
+                  $errors []= $this->get_error_message( $code );
+              }
+          }
+          $attributes['errors'] = $errors;
+
             return $this->get_template_html( 'register_form', $attributes );
 
 
@@ -83,6 +94,12 @@ class Register extends BaseController{
           return $errors;
       }
 
+      if ( strlen( $psw ) < 6 ) {
+          $errors->add( 'weak_password', $this->get_error_message( 'weak_password') );
+          return $errors;
+      }
+
+
       $explode = explode("@", $email);
       $name = $explode[0];
 
@@ -103,14 +120,14 @@ class Register extends BaseController{
    * when accessed through the registration action.
    */
   public function do_register_user() {
-      if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
+      if ( 'POST' == $_SERVER['REQUEST_METHOD']  && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) )  {
         $redirect_url = home_url( 'register' );
 
         if( ! isset( $_POST['registerNonce'] ) || ! wp_verify_nonce( $_POST['registerNonce'], 'register-nonce' ))
         {    die('nonce problem');  }
         elseif ( ! $this->verify_recaptcha() ) {
             // Recaptcha check failed, display error
-            $redirect_url = add_query_arg( 'spam', 'captcha', $redirect_url );
+            $redirect_url = add_query_arg( 'errors', 'captcha', $redirect_url );
 
             } else {
 

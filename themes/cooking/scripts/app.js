@@ -3,7 +3,6 @@ import MobileMenu from './modules/MobileMenu';
 import Navigation from './modules/Navigation';
 import GoogleMap from './modules/GoogleMap';
 import Search from './modules/Search';
-
 import FilterPost from './modules/FilterPost';
 import UploadProfilePic from './modules/UploadProfilePic';
 // import Login from './modules/Login';

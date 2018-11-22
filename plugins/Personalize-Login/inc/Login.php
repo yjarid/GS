@@ -95,24 +95,7 @@ function redirect_to_custom_login() {
  }
 }
 
-/**
-* Redirects the Logged in user to the correct page depending on whether he / she
-* is an admin or not.
-*
-* @param string $redirect_to   An optional redirect_to URL for admin users
-*/
-private function redirect_logged_in_user( $redirect_to = null ) {
- $user = wp_get_current_user();
- if ( user_can( $user, 'manage_options' ) ) {
-     if ( $redirect_to ) {
-         wp_safe_redirect( $redirect_to );
-     } else {
-         wp_redirect( admin_url() );
-     }
- } else {
-     wp_redirect( home_url( 'user-profile' ) );
- }
-}
+
 
 /**
 * Redirect the user if there were any errors in the  authentication .
@@ -127,6 +110,11 @@ function maybe_redirect_at_authenticate( $user, $username, $password ) {
  // Check if the earlier authenticate filter (most likely,
  // the default WordPress authentication) functions have found errors
  if ( $_SERVER['REQUEST_METHOD'] === 'POST' && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+
+   if( ! isset( $_POST['loginNonce'] ) || ! wp_verify_nonce( $_POST['loginNonce'], 'login-nonce' )) {
+      die('nonce problem');
+   }
+
    $login_url = home_url( 'login' );
    if ( is_wp_error( $user ) ) {
        $error_codes = join( ',', $user->get_error_codes() );
@@ -147,42 +135,9 @@ function maybe_redirect_at_authenticate( $user, $username, $password ) {
    }
  }
  return $user;
+
 }
 
-/**
-* Finds and returns a matching error message for the given error code.
-*
-* @param string $error_code    The error code to look up.
-*
-* @return string               An error message.
-*/
-private function get_error_message( $error_code ) {
- switch ( $error_code ) {
-     case 'empty_username':
-         return __( 'You do have an email address, right?', 'personalize-login' );
-
-     case 'empty_password':
-         return __( 'You need to enter a password to login.', 'personalize-login' );
-
-     case 'invalid_username':
-         return __(
-             "We don't have any users with that email address. Maybe you used a different one when signing up?",
-             'personalize-login'
-         );
-
-     case 'incorrect_password':
-         $err = __(
-             "The password you entered wasn't quite right. <a href='%s'>Did you forget your password</a>?",
-             'personalize-login'
-         );
-         return sprintf( $err, wp_lostpassword_url() );
-
-     default:
-         break;
- }
-
- return __( 'An unknown error occurred. Please try again later.', 'personalize-login' );
-}
 
 /**
 * Returns the URL to which the user should be redirected after the (successful) login.

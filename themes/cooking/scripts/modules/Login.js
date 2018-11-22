@@ -12,8 +12,7 @@ class Login {
    this.errorPassword = this.form.find("#error-password");
    this.loginStatusMessage = this.form.find("#status");
    this.events();
-   console.log('test');
-     }
+  }
 
     events() {
         this.userEmail.on("blur", this.emailValidation.bind(this));
@@ -24,7 +23,6 @@ class Login {
     emailValidation(){
       this.errorEmail.hide();
       var email = this.userEmail.val();
-
       if(email && !this.strongEmail(email)) {
         this.errorEmail.show();
         return false;
@@ -34,7 +32,6 @@ class Login {
     passValidation(){
       this.errorPassword.hide();
       var password = this.userPass.val();
-
       if(password && !this.strongPassword(password)) {
         this.errorPassword.show();
         return false;
@@ -88,7 +85,7 @@ class Login {
             switch(data.html) {
               case 'empty_username' : err_msg = 'You do have an email address, right?'; break;
               case 'empty_password' : err_msg = 'You need to enter a password to login.'; break;
-              case 'invalid_username' : err_msg = 'We don\'t have any users with that email address. Maybe you used a different one when signing up?'; break;
+              case 'invalid_email' : err_msg = 'We don\'t have any users with that email address. Maybe you used a different one when signing up?'; break;
               case 'incorrect_password' : err_msg = 'The password you entered wasn\'t quite right.'; break;
               case 'activation_failed' : err_msg = 'Please Activate tour Account'; break;
             }
@@ -103,16 +100,13 @@ class Login {
           }
         ,
         error: function(jqxhr, status, exception) {
-      console.log('Exception:'+ exception);
-  }
+          console.log('Exception:'+ exception);
+        }
       });
 
-
-
-
       return false;
-
     }
+
 
     strongEmail(email) {
       var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;

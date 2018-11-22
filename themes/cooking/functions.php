@@ -9,8 +9,6 @@ require get_theme_file_path('/incl_func/ajax-sortPost.php');
 require get_theme_file_path('/incl_func/ajax-filterPost.php');
 require get_theme_file_path('/incl_func/ajax-loadMore.php');
 require get_theme_file_path('/incl_func/ajax-registerOrLogin.php');
-require get_theme_file_path('/incl_func/template-redirect.php');
-require get_theme_file_path('/incl_func/login.php');
 
 
 // Remove the WordPress Admin top Toolbar

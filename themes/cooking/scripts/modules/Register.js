@@ -5,13 +5,11 @@ class Register {
   constructor() {
    this.form = $("#yj-register-form");
    this.loginButton = this.form.find("#registerbutton");
-   // this.userName = this.form.find("#registerName");
    this.userEmail = this.form.find("#registeremail");
    this.userPass = this.form.find("#registerPassword");
    this.errorEmail = this.form.find("#reg-error-email");
    this.errorPass = this.form.find("#reg-error-password");
    this.registerStatusMessage = this.form.find("#reg-status");
-   console.log('hello');
    this.events();
     }
 
@@ -56,12 +54,15 @@ class Register {
 
     registerfunc(e) {
 
+      e.preventDefault();
       var that = this;
       this.errorEmail.hide();
       this.errorPass.hide();
 
       var email = this.userEmail.val();
       var pass = this.userPass.val();
+      var captcha = grecaptcha.getResponse();
+
 
 
       if(!email) {
@@ -92,6 +93,11 @@ class Register {
         return false;
       }
 
+      if(!captcha) {
+        this.registerStatusMessage.html('check I\'m not a robot  !!!');
+        return false;
+      }
+
       this.registerStatusMessage.html('Wait we are regigistring you ...');
 
       $.ajax({
@@ -102,7 +108,9 @@ class Register {
           'action': 'register', //
           'nonceRegister' : jsData.register_nonce, // nonce
           'email' : email,
-          'pass' :pass
+          'pass' :pass,
+          'captcha': grecaptcha.getResponse()
+
         },
         type: 'POST', // POST
 
@@ -115,6 +123,7 @@ class Register {
                 var err_msg;
                   switch(data.html) {
                     case 'existing_user_email' : err_msg = 'this email address exist?'; break;
+                    case 'recaptcha' : err_msg = 'The Google reCAPTCHA check failed. Are you a robot?'; break;
                      default: err_msg = 'Something is wrong please verify your login info';
                     }
                   that.registerStatusMessage.html(err_msg);
@@ -129,20 +138,13 @@ class Register {
           }
         },
         error: function(jqxhr, status, exception) {
-      console.log('Exception:'+ exception);
-
-  }
+          console.log('Exception:'+ exception);
+          }
       });
 
-
       return false;
-
     }
 
-    strongName(name) {
-      var name_regex = /^[a-zA-Z0-9._-]{6,20}$/i;
-      return name_regex.test(name)  ;
-    }
 
     strongEmail(email) {
       var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;

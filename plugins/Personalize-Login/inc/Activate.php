@@ -22,6 +22,17 @@ class Activate
                    'title' => __( 'Register', 'personalize-login' ),
                    'content' => '[custom-register-form]'
                ),
+               'Activate' => array(
+                   'title' => __( 'Activation Page', 'personalize-login' ),
+               ),
+              'password-lost' => array(
+                  'title' => __( 'Forgot Your Password?', 'personalize-login' ),
+                  'content' => '[custom-password-lost-form]'
+              ),
+              'password-reset' => array(
+                  'title' => __( 'Pick a New Password', 'personalize-login' ),
+                  'content' => '[custom-password-reset-form]'
+              )
                // 'member-account' => array(
                //     'title' => __( 'Your Account', 'personalize-login' ),
                //     'content' => '[account-info]'
