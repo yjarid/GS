@@ -14,21 +14,18 @@
       </div>
         <input type="hidden" id="user_login" name="rp_login" value="<?php echo esc_attr( $attributes['login'] ); ?>" autocomplete="off" />
         <input type="hidden" name="rp_key" value="<?php echo esc_attr( $attributes['key'] ); ?>" />
-        <p>
-            <label for="pass1"><?php _e( 'New password', 'personalize-login' ) ?></label>
+        <div class="login-form--inside">
+            <label for="pass1"><?php _e( 'New password', 'personalize-login' ) ?><span class='register-desc'> (at least 6 characters)</span></label>
             <input type="password" name="pass1" id="pass1" class="input" size="20" value="" autocomplete="off" />
-        </p>
-        <p>
+        </div>
+        <div class="login-form--inside">
             <label for="pass2"><?php _e( 'Repeat new password', 'personalize-login' ) ?></label>
             <input type="password" name="pass2" id="pass2" class="input" size="20" value="" autocomplete="off" />
-        </p>
+        </div>
 
-        <p class="description"><?php echo wp_get_password_hint(); ?></p>
-
-        <p class="resetpass-submit">
-            <input type="submit" name="submit" id="resetpass-button"
+          <input class="btn btn--register btn--register--s" type="submit" name="submit" id="resetpass-button"
                    class="button" value="<?php _e( 'Reset Password', 'personalize-login' ); ?>" />
-        </p>
+
     </form>
   </div>
 </div>

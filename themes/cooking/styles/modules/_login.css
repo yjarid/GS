@@ -4,8 +4,6 @@
 
 .login-form {
   background-color: rgba(240,153,218,.5);
-  /* min-height: 350px; */
-  /* position: relative; */
   border-radius: 10%;
   display: flex;
   justify-content: center;
@@ -16,8 +14,8 @@
     padding: 10px;
     border-radius: 4px;
     background-color: #fff;
-    width : 80%;
-    margin: 2rem auto;
+    width : 92%;
+    margin: 4% auto;
     }
 
   &--inside{
@@ -39,10 +37,16 @@
       color: $mainGold;
   }
 
+  .form-desc{
+    font-size: .9rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
     label {
-        margin-left: 3rem;
+        margin-left: 20%;
         font-size: 1.2rem;
-        color: $mainGold;
+        color: $logoGold;
 
 
     }
@@ -53,7 +57,7 @@
       margin: .6rem 0;
         padding: 4px;
         font-size: 12px;
-        width: 80%;
+        width: 60%;
         align-self: center;
         justify-self: center;
     }
@@ -74,10 +78,13 @@
         margin: 1rem auto;
 
         a {
-            font-size: 1rem;
-            text-transform: uppercase;
-            display: inline-block;
-            margin: 0 4px;
+            font-size: .8rem;
+            margin: .8rem auto;
+            display: block;
+            strong {
+              font-size: 1rem;
+              color: $mainGold;
+            }
         }
     }
 
@@ -101,11 +108,15 @@
   font-style: italic;
   margin: 0 0 1rem 1.2rem;
   font-size: .6rem;
+  width: 60%;
+  align-self: center;
+  justify-self: center;
 }
 
 .message {
-  font-size: .75rem;
+  font-size: .9rem;
   margin : 1.5rem 0;
+  text-align: center;
 
   &-err {
     color: #861C22;

@@ -3,8 +3,7 @@
 
     <h3><?php _e( 'Forgot Your Password?', 'personalize-login' ); ?></h3>
 
-    <p> <?php _e("Enter your email address and we'll send you a link you can use to pick a new password.",
-                'personalize_login' ); ?> </p>
+
 
     <form id="lostpasswordform" action="<?php echo wp_lostpassword_url(); ?>" method="post">
       <div class="message">
@@ -16,15 +15,15 @@
          }
         ?>
       </div>
-        <p class="form-row">
-            <label for="user_login"><?php _e( 'Email', 'personalize-login' ); ?>
+        <div class="login-form--inside">
+            <label for="user_login"><?php _e( 'Enter your Email : ', 'personalize-login' ); ?> </label>
             <input type="text" name="user_login" id="user_login">
-        </p>
+        </div>
 
-        <p class="lostpassword-submit">
-            <input type="submit" name="submit" class="lostpassword-button"
+
+      <input class="btn btn--register btn--register--s" type="submit" name="submit" class="lostpassword-button"
                    value="<?php _e( 'Reset Password', 'personalize-login' ); ?>"/>
-        </p>
+
     </form>
 
   </div>

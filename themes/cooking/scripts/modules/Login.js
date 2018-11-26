@@ -1,7 +1,6 @@
 
 import $ from 'jquery';
 class Login {
-
   // 1. describe and create/initiate our object
   constructor() {
    this.form = $("#yj-login-form");
@@ -10,7 +9,8 @@ class Login {
    this.userPass = this.form.find("#password");
    this.errorEmail = this.form.find("#error-email");
    this.errorPassword = this.form.find("#error-password");
-   this.loginStatusMessage = this.form.find("#status");
+   this.loginErrMessage = this.form.find(".message-err");
+   this.loginRedMessage = this.form.find(".message-red");
    this.events();
   }
 
@@ -80,7 +80,9 @@ class Login {
         type: 'POST', // POST
 
         success:function(data){
+
         if(data.login == 'false') {
+          that.form.find(".message-err").remove();
           var err_msg;
             switch(data.html) {
               case 'empty_username' : err_msg = 'You do have an email address, right?'; break;
@@ -89,11 +91,12 @@ class Login {
               case 'incorrect_password' : err_msg = 'The password you entered wasn\'t quite right.'; break;
               case 'activation_failed' : err_msg = 'Please Activate tour Account'; break;
             }
-            that.loginStatusMessage.html(err_msg);
+            console.log('hell');
+            that.form.prepend(`<div class="message-err">${err_msg} </div>`);
           }
 
             if(data.login == 'true') {
-              that.loginStatusMessage.html(data.html);
+              that.form.prepend(`<div class="message-red">${data.html} </div>`);
               var url = jsData.root_url +'/user-profile';
               $(location).attr('href',url);
             }

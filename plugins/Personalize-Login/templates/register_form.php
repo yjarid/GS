@@ -1,7 +1,7 @@
 
 <div class="wrapper wrapper--narrow login-form">
   <div class="login-form-container">
-    <h2>Welcome to Golden Spoon </h2>
+    <h2>Welcome to The Golden Spoon </h2>
     <form  id="yj-register-form" action="<?php echo wp_registration_url(); ?>" method="post" >
       <div class="message">
           <?php
@@ -28,12 +28,12 @@
             <div class="g-recaptcha " data-sitekey="<?php echo $attributes['recaptcha_site_key']; ?>"></div>
         </div>
       <?php endif; ?>
-      <div class="login-form--inside">
-        <input class="btn btn--register" name="wp-submit" id="registerbutton" type="submit" value="register" name="submit">
-      </div>
+
+        <input class="btn btn--register" name="wp-submit" id="registerbutton" type="submit" value="Register" name="submit">
+
       <!-- <p class="status" id="reg-status"></p> -->
       <div class="actions ">
-        <a href="<?php echo wp_lostpassword_url(); ?>">Forgot Password?</a> - <a href="<?php echo wp_registration_url(); ?>">Register</a>
+        <a href="<?php echo site_url( 'login' ); ?>">Already a member <strong>Login</strong></a>
       </div>
       <?php wp_nonce_field( 'register-nonce', 'registerNonce' ); ?>
     </form>
