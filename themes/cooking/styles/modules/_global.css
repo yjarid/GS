@@ -21,7 +21,7 @@ img {
 section {
   margin-bottom: 1rem ;
   @mixin large {
-  margin-bottom: 2rem;
+  margin-bottom: 1.7rem;
   }
 
 

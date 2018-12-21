@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head(); ?>
-    <title>Golden Spoon</title>
   </head>
 
 
@@ -17,9 +16,9 @@
           <div class="menuIcon_midle"></div>
         </div>
 
-          <section class="headerNav">
-            <section class="layoutHeaderSection">
-              <div class="eatingWellLogo ">
+          <div class="headerNav">
+            <div class="layoutHeaderSection">
+              <div class="siteLogo">
                   <a href="<?php echo site_url('/')?>">
                   <img alt="GoldenSpoon" src="<?php echo get_theme_file_uri('/incl/img/logo.png') ?>" />
                   </a>
@@ -55,7 +54,7 @@
                     </div>
                 </div>
               </div>
-        </section>
+        </div>
 
           <!-- MAIN NAvigation -->
             <nav class="main-navigation">
@@ -147,6 +146,6 @@
 
     </nav>
 
-    </section>
+  </div>
 
       </header>

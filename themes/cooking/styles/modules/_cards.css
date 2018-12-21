@@ -48,18 +48,17 @@
 
 .cardsTitle {
   display: inline-block;
-  padding:  1.2rem;
+  padding:  .7rem;
   font-size: 1.4rem;
   color: $cardTitle;
   font-weight: lighter;
   @mixin meduim{
-    font-size: 3rem;
-    padding:  1.8rem;
+    font-size: 2rem;
   }
 
   @mixin large{
-    font-size: 3rem;
-    padding:  2rem;
+    font-size: 2rem;
+    font-weight: 500;
   }
 }
 

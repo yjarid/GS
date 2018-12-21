@@ -83,7 +83,7 @@
   width: 100%;
   background-color: $lightPurple;
   transition: all .5s ease-out;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 
 
   &-is-visible {
