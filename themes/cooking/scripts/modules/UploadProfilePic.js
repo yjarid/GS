@@ -4,28 +4,29 @@ class UploadProfilePic {
   constructor() {
     this.mediaUploader;
     this.attachement;
+    this.form = $('#front-end-profile');
     this.events();
+
   }
 
   // events
   events() {
-    $('#button_profile_image').on("click", this.uploadPic.bind(this));
-
+    this.form.find('#button_profile_image').on("click", this.uploadProfilPic.bind(this));  
   }
 
-   uploadPic(e) {
+  uploadProfilPic(e) {
 
      e.preventDefault();
+   
      if (this.mediaUploader) {
-       //console.log(this.mediaUploader);
        this.mediaUploader.open();
        return;
      }
 
      this.mediaUploader = wp.media.frames.file_frame = wp.media({
-       title: 'Upload Your Nice Picture',
+       title: 'Upload Profile Picture',
        button: {
-         text: '3zeleee'
+         text: 'Select'
        },
        multiple: false
      });
@@ -33,13 +34,17 @@ class UploadProfilePic {
      this.mediaUploader.on('select' , () => {
        this.attachement = this.mediaUploader.state().get('selection').first().toJSON();
        console.log(this.attachement);
-       console.log('helloo');
-       $('#submitted_profile_image').val(this.attachement.url);
-     });
+       
+       $('#user_picture').val(this.attachement.url);
+       $('#avatar-image-container').find('img').attr('src', $('#user_picture').val() );
 
+     });
      this.mediaUploader.open();
    }
+ 
 
-}
+  }
+
+
 
 export default UploadProfilePic;

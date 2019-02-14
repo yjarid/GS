@@ -1,8 +1,12 @@
-.wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
 
-  &--narrow {
-    max-width: 600px;
-  }
+/* Block Container */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+}
+
+.container--narrow {
+  max-width: 960px;
 }

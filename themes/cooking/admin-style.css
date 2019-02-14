@@ -1,0 +1,35 @@
+.admin_images_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
+
+.admin_image img {
+    display:block;
+    margin:auto;
+}
+
+.admin_image_action {
+    margin-top: .6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: .5rem
+}
+
+.admin_image_delete, .admin_image_setFI {
+     color: #fff;
+    padding: .3rem .6rem;
+    border-radius: 20%;
+    font-size: .7rem;
+}
+
+.admin_image_delete{
+    background-color: brown;
+    justify-self: center;
+}
+
+.admin_image_setFI{
+    background-color: blue;
+    justify-self: start;
+    
+}

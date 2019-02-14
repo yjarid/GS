@@ -89,7 +89,7 @@ class Login {
               case 'empty_password' : err_msg = 'You need to enter a password to login.'; break;
               case 'invalid_email' : err_msg = 'We don\'t have any users with that email address. Maybe you used a different one when signing up?'; break;
               case 'incorrect_password' : err_msg = 'The password you entered wasn\'t quite right.'; break;
-              case 'activation_failed' : err_msg = 'Please Activate tour Account'; break;
+              case 'activation_failed' : err_msg = 'Please Activate your Account'; break;
             }
             console.log('hell');
             that.form.prepend(`<div class="message-err">${err_msg} </div>`);

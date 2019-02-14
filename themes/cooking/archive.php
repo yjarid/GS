@@ -16,7 +16,7 @@ get_header();
     the_post();
 
 
-  get_template_part( 'content/cardImage' );
+  get_template_part( 'content/recipeCard' );
 
 
  }

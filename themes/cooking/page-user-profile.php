@@ -1,30 +1,31 @@
 <?php
-get_header();
+ get_header(); ?>
 
+ <div class="container">
 
+ <nav>
+  <ul class="nav nav-tabs" id="userProfile">
+    <li class="active" id="h"> <a href="profile"> My Profile</a></li>
+    <li class=""> <a href="recipe"> My Recipes</a></li>
+    <li class=""> <a href="fav"> My Favourites</a></li>
+    <li class=""> <a href="friend"> My Friends</a></li>
+    <li class=""> <a href="made"> Made it</a></li>
+  </ul>
+</nav>
 
-while(have_posts()){
-  the_post();
+<div class="tab-content" >
 
-the_content();
-$profile_pic = get_user_meta( get_current_user_id(), 'picture', true );
-print_r($profile_pic);
-?>
-
-<div class="image_container" style="display:block; width: 100%; overflow: hidden; text-align: center;">
-  <div class="profile_picture" style=" width: 140px; height: 140px; overflow: hidden; " >
-
-    <?php
-      echo get_avatar( get_current_user_id(), $size = 96, $default = '', $alt = 'best pict', $args = null ); ?>
-
+  <div id="tab-1" class="tab-pane active">
+   <?php get_template_part('templates/userProfile/mainProfile') ;?>
+ 
   </div>
-</div>
 
-<?php }
-
+ </div>
 
 
+ </div>
 
 
 
+<?php
  get_footer();

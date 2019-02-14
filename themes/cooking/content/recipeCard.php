@@ -3,7 +3,7 @@
 
     <a href="<?php the_permalink() ?>">
     <div class="cardImage">
-      <?php the_post_thumbnail( ) ?>
+      <?php the_post_thumbnail( 'medium') ?>
     </div>
     <div class="">
       <span class="cardTitle"><?php the_title( ) ; ?> </span>

@@ -78,14 +78,15 @@ get_header();?>
           $name = esc_html($chef->display_name);
           $img_url = esc_url( get_user_meta($id, 'picture', true)) ;
           $url =get_author_posts_url($id) ;
+          $alt = 'hello';
           ?>
 
           <div class="categoryCard">
-            <div class="categoryImg">
-              <a href="<?php echo $url ?>" class="categoryCardLink">
-                      <img src="<?php echo $img_url ?>" class="categoryCardImage" alt="<?php echo $alt; ?>">
+            <a href="<?php echo $url ?>" class="categoryCardLink">
+                <div class="categoryImg">
+                    <img src="<?php echo $img_url ?>" class="categoryCardImage" alt="<?php echo $alt; ?>">
+                </div>
             </a>
-            </div>
             <div class="categoryCardTitle">
               <span class="categoryText"><?php echo $name;  ?></span>
               <span class="categoryViews"><?php echo getUserViews($id, 'user_count_'.$year )  ?> </span>

@@ -6,8 +6,9 @@ function GS_post_type() {
 
 
   register_post_type('recipe', array(
+    'show_in_rest' => true,
     'map_meta_cap' => true,
-    'supports' => array('title', 'editor', 'excerpt','thumbnail','author'),
+    'supports' => array('title', 'editor', 'excerpt','thumbnail','author','comments'),
     'has_archive' => true,
     'rewrite' => array('slug' => 'recipes'),
     'public' => true,

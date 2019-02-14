@@ -49,7 +49,7 @@ $prefix = 'GS_';
 	$rel_chef = new_cmb2_box( array(
 		'id'           => $prefix .'related_chef_field',
 		'title'        => __( 'Related Chef', 'yourtextdomain' ),
-		'object_types' => array( 'recipe' ), // Post type
+		'object_types' => array( 'post' ), // Post type
 		'context'      => 'normal',
 		'priority'     => 'high',
 		'show_names'   => false, // Show field names on the left
@@ -73,4 +73,6 @@ $prefix = 'GS_';
 
 
 }
-add_action( 'cmb2_init', 'cmb2_attached_posts_field_metaboxes_example' );
+add_action( 'cmb2_admin_init', 'cmb2_attached_posts_field_metaboxes_example' );
+
+

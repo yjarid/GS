@@ -1,0 +1,89 @@
+.authorMain{
+    display : grid;
+    grid-template-columns: 1fr 3fr;
+    font-size: .8rem;
+
+    grid-auto-rows: min-max(16rem, auto);
+    background-color: rgba(#FDEBBA, 0.7);
+    
+   .authorSummary {
+        text-align: center;
+        background-color: #FDE6A3;
+
+        .authStat{
+            padding: .4rem;
+            margin: .25rem;
+            color: $mainPurple;
+            background-color: #FDEBBA;
+        }
+
+        .authorAvatar{
+            border-radius: 50%;
+            border: .5rem solid #eee;
+            overflow: hidden;
+            height: 9rem;
+            margin: .6rem;
+    
+        }
+
+        .following {
+            background-color: $logoGold;
+        }
+    }
+
+
+    .authorAdditional{
+        color: $mainPurple;
+
+        .authorDesc {
+            height: 75%;
+            padding: 1.5rem 2rem;
+        
+            .authDescText {
+                margin: .6rem 1rem; 
+                line-height: 1.2rem;
+                font-style: italic;
+                font-size: larger;            
+            }           
+        }
+    
+        .authorfollower{
+            padding: 1.5rem 2rem;
+        }
+    
+
+    }
+
+
+}
+
+#loginOverlay {
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($mainPurple,0.3); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+
+    .loginOverlay-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: white;
+        transform: translate(-50%,-50%);
+        padding: 4rem 6rem ;
+        background-color: rgba($mainPurple, 0.7);
+        text-align: center;
+
+        .loginOverlay-title{
+            margin-bottom: 1rem;
+        }
+    }
+  }
+
+  

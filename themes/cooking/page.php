@@ -2,7 +2,7 @@
 
 get_header();
 
-echo '<div class="wrapper">';
+echo '<div class="container container--narrow">';
 
 while(have_posts()){
  the_post();

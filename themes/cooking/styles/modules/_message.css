@@ -1,0 +1,43 @@
+
+.message {
+    font-size: .9rem;
+    margin : 1.5rem 0;
+    text-align: center;
+  
+    &-err {
+      color: #861C22;
+      padding: 1rem 2rem;
+      background-color: rgba(255,50,65,.4);
+      }
+  
+    &-red {
+      color: #117031;
+      background-color: rgba(97,176,140,.3);
+      padding: 1rem 2rem;
+    }
+  }
+
+.message-err-comment{
+    color: #861C22;
+    padding: .75rem 2rem;
+    font-size:.9rem;
+    background-color: rgba(255,50,65,.7);
+    text-align: center;
+}
+
+.message-err-postRecipe {
+    width: 85%;
+    border-radius: 10%;
+    margin-bottom: .4rem;
+    padding-top: .4rem ;
+    padding-bottom: .4rem ;
+    font-size: .9rem;
+    color: #861C22;
+    background-color: rgba(255,50,65,.4);
+    text-align: center;
+
+}
+
+.border-red {
+border: 3px solid red !important ;
+}

@@ -12,6 +12,7 @@
   padding: .2rem 1.2rem;
   display: inline-block;
   border-radius: 1rem;
+  cursor: pointer;
 
   &--register {
     padding: .75rem 4rem;
@@ -22,6 +23,16 @@
       padding: .5rem 2rem;
     }
 
+  }
+
+  &--author {
+    padding: .75rem 3rem;
+    background-color: $mainGold;
+    font-size: 1rem;
+    font-weight: bold;
+    a{
+      color: #fff;
+    }   
   }
 
   }

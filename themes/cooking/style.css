@@ -383,17 +383,8 @@ section {
 }
    }
 
-/* Block Container */
-
-.container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 16px;
-  position: relative;
-}
-
-.container--narrow {
-  max-width: 960px;
+.hidden {
+  display: none;
 }
 
 @media (min-width: 500px) {
@@ -1293,48 +1284,37 @@ font-weight: bold;
 
 .recipeTopcontainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 2fr .5fr 1.5fr;
   grid-gap: 1rem;
+  align-content : center;
+  justify-content: center;
 }
 
 .recipeInfo {
-    grid-column: 3/4;
     color : #8D164F;
 }
 
-.recipeMedia {
-  grid-column: 1/3;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: 1rem;
-}
+.recipeMainImg img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-.recipeMainImage {
-  grid-column: 1/6;
-  grid-row: 1/4;
-  align-self: center;
-  justify-self: center;
-}
+.recipeMedia .recipeImg{
+  display: block; 
+  }
 
-.recipeImage {
-  grid-column: 6/9;
-  grid-row: 1/4;
-  display: grid;
-  grid-auto-rows: repeat(3, 1fr);
-  grid-gap: 1rem;
-}
+.recipeMedia .recipeImg img {
+      display: block;   
+      transition: -webkit-transform .5s ease;   
+      transition: transform .5s ease;   
+      transition: transform .5s ease, -webkit-transform .5s ease;
+    }
 
-.recipeImg{
-    position: relative;
-    height: 150px;
-    overflow: hidden;
-}
-
-.recipeImg img {
-    position: absolute;
-    top: -2rem;
-}
+.recipeMedia .recipeImg img:hover{
+    -webkit-transform: rotate(1deg) scale(1.02);
+            transform: rotate(1deg) scale(1.02);
+  }
 
 /* recipe Info section */
 
@@ -1381,7 +1361,7 @@ color: #fff;
 
 .recipeMain {
   display: grid;
-  grid-template-columns:  1fr 2fr 1fr;
+  grid-template-columns:  1fr 2fr;
   grid-column-gap: 2rem;
 }
 
@@ -1702,14 +1682,18 @@ body.admin-bar .search-overlay {
           animation: spin 1s infinite linear;
 }
 
-.wrapper {
-  max-width: 1200px;
+/* Block Container */
+
+.container {
+  max-width: 1300px;
   margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
 }
 
-.wrapper--narrow {
-    max-width: 600px;
-  }
+.container--narrow {
+  max-width: 960px;
+}
 
 /* Login Page */
 
@@ -1821,24 +1805,6 @@ body.admin-bar .search-overlay {
   justify-self: center;
 }
 
-.message {
-  font-size: .9rem;
-  margin : 1.5rem 0;
-  text-align: center;
-}
-
-.message-err {
-    color: #861C22;
-    padding: 1rem 2rem;
-    background-color: rgba(255,50,65,.4);
-    }
-
-.message-red {
-    color: #117031;
-    background-color: rgba(97,176,140,.3);
-    padding: 1rem 2rem;
-  }
-
 @keyframe spin {
   0% {transfrom: rotate(0deg);}
   100% {transfrom: rotate(360deg);}
@@ -1852,6 +1818,7 @@ body.admin-bar .search-overlay {
   padding: .2rem 1.2rem;
   display: inline-block;
   border-radius: 1rem;
+  cursor: pointer;
 
   }
 
@@ -1864,6 +1831,17 @@ body.admin-bar .search-overlay {
 
 .btn--register--s{
       padding: .5rem 2rem;
+    }
+
+.btn--author {
+    padding: .75rem 3rem;
+    background-color: #B19324;
+    font-size: 1rem;
+    font-weight: bold;   
+  }
+
+.btn--author a{
+      color: #fff;
     }
 
 .loadMoreButton {
@@ -1900,3 +1878,477 @@ body.admin-bar .search-overlay {
 
               animation: spin 3000ms infinite linear;
     }
+
+/* User profile page Navigation */
+
+.nav-tabs{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    width: 70%;
+    justify-items: center;
+    grid-gap: 4px;
+}
+
+.nav-tabs li {
+    margin: 4px 0px;
+    list-style: none;
+    padding: 3px 0px;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: #a4119f;
+    border-radius: 6px;
+    width: 95%;
+
+  }
+
+@media (min-width: 900px) {
+
+.nav-tabs li {
+      border: 3px solid #F043E9;
+      margin-right: 3%;
+      padding: 4px 0px;
+      background-color: blueviolet
+
+  }
+   }
+
+.nav-tabs li a{
+        color :#fff;
+    }
+
+.nav-tabs li:hover{
+    /* cursor: pointer; */
+    background-color: orangered;
+    
+}
+
+.nav-tabs li:hover a {
+        color: #a4119f;
+    }
+
+.nav-tabs li.active {
+    background-color: gray;
+}
+
+.nav-tabs li.active a{
+        color: blue;
+    }
+
+.tab-content .tab-pane {
+        display: block;
+        width: 80%;
+        background-color: #f5f5f5;
+        margin: 2rem auto;
+
+    }
+
+.edit-profile-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-column-gap: 1rem;
+    
+  }
+
+.edit-profile-container #front-end-profile {
+
+        background-color: #eee;
+
+    }
+
+.edit-profile-container #front-end-profile .cmb2-wrap .cmb-row{
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+            }
+
+.edit-profile-container #front-end-profile .cmb2-wrap .cmb-row label{
+                    margin-left: 2rem;
+                    color: #a4119f;
+                    font-weight: 500;
+                    line-height: 1.1;
+                }
+
+.edit-profile-container #front-end-profile .cmb2-wrap .cmb-row textarea {
+                    width : 85%;
+                    height: 8rem;
+                }
+
+.edit-profile-container #front-end-profile .cmb2-wrap .cmb-row input {
+                    display: inline-block;
+                    margin: 0 auto 1rem auto;  
+                    width: 85%;	
+                    border-radius: 1rem;
+                    outline: none;
+                    padding: 10px;
+                    font-size: 1em;
+                    color: #676767;
+                    transition: border 0.5s;
+                    border: solid 2px rgba(240,153,218,.5);
+                }
+
+.edit-profile-container #front-end-profile .cmb2-wrap .cmb-row .new_recipe_image {
+                    background-color: rgba(240,153,218,.7);
+                    color: #fff;
+                }
+
+.edit-profile-container #front-end-profile .cmb2-wrap .cmb-row textarea:focus, .edit-profile-container #front-end-profile .cmb2-wrap .cmb-row input:focus{
+                    border: solid 3px rgba(240,67,233, .8);	
+                }
+
+.authorMain{
+    display : grid;
+    grid-template-columns: 1fr 3fr;
+    font-size: .8rem;
+
+    grid-auto-rows: min-max(16rem, auto);
+    background-color: rgba(253,235,186, 0.7);
+
+
+}
+
+.authorMain .authorSummary {
+        text-align: center;
+        background-color: #FDE6A3;
+    }
+
+.authorMain .authorSummary .authStat{
+            padding: .4rem;
+            margin: .25rem;
+            color: #a4119f;
+            background-color: #FDEBBA;
+        }
+
+.authorMain .authorSummary .authorAvatar{
+            border-radius: 50%;
+            border: .5rem solid #eee;
+            overflow: hidden;
+            height: 9rem;
+            margin: .6rem;
+    
+        }
+
+.authorMain .authorSummary .following {
+            background-color: #D4AF37;
+        }
+
+.authorMain .authorAdditional{
+        color: #a4119f;
+    
+
+    }
+
+.authorMain .authorAdditional .authorDesc {
+            height: 75%;
+            padding: 1.5rem 2rem;           
+        }
+
+.authorMain .authorAdditional .authorDesc .authDescText {
+                margin: .6rem 1rem; 
+                line-height: 1.2rem;
+                font-style: italic;
+                font-size: larger;            
+            }
+
+.authorMain .authorAdditional .authorfollower{
+            padding: 1.5rem 2rem;
+        }
+
+#loginOverlay {
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(164,17,159,0.3); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+  }
+
+/* Add a pointer on hover */
+
+#loginOverlay .loginOverlay-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: white;
+        -webkit-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+        padding: 4rem 6rem ;
+        background-color: rgba(164,17,159, 0.7);
+        text-align: center;
+    }
+
+#loginOverlay .loginOverlay-content .loginOverlay-title{
+            margin-bottom: 1rem;
+        }
+
+/* comment List CSS */
+
+.comment-list{
+
+    list-style-type: none;
+
+}
+
+.comment-list .comment {
+        border-bottom: 4px solid #eee;
+        margin: 2rem 1rem;
+        padding: 0 2rem 1rem 2rem;
+    
+  
+    
+    }
+
+.comment-list .comment article{
+            display: grid;
+            grid-auto-columns: 1fr 3fr;
+        }
+
+.comment-list .comment .comment-body {
+
+            margin: .4rem 3rem;
+            position: relative;
+            
+           
+        }
+
+.comment-list .comment .comment-body .comment-meta .comment-author{
+    
+                    margin-top: .6rem;
+            
+                }
+
+.comment-list .comment .comment-body .comment-meta .comment-author img{
+                        border-radius: 50%;
+                        border: 2px solid #B19324;
+                        left: -3.5rem;
+                        position: absolute;
+                        width: 45px;
+                        height: 45px;
+                        
+                    }
+
+.comment-list .comment .comment-body .comment-meta a{
+                    font-size: .8rem;
+                    color: rgb(167, 160, 160);
+                }
+
+.comment-list .comment .comment-body .comment-meta .comment-awaiting-moderation{
+                    display: inline-block;
+                    padding: .5rem 1rem;
+                    background-color: rgba(175,170,170, .6);
+                    font-size: .7rem;
+                }
+
+.comment-list .comment .comment-body .comment-content{
+                padding: 0 0.5rem 1rem .2rem;
+            }
+
+.comment-list .comment .comment-body .comment-content .stars{
+                    margin: 0 0 .5rem -0.2rem;
+                }
+
+/*  css for commment summary and comment title just before Comment list  */
+
+.comments-indicator {
+margin: 2rem auto;
+/* display:inline-block; */
+padding: 1rem;
+width: 60%;
+text-align: center;
+background-color: #FDE380;
+color: #a4119f;
+}
+
+/* Css for comment navigation  */
+
+.comment-navigation {
+    margin-bottom: 2rem; 
+}
+
+/* CSS for Comment Form  */
+
+.comment-respond{
+    background-color: rgba(240,153,218,.4);
+    border-radius: 10%;
+    width: 60%;
+    overflow:auto;
+}
+
+.comment-reply-title{
+    margin: 1rem;
+    padding-left: 1rem;
+    font-weight: 400;
+    color:#B19324;
+
+}
+
+.comment-form{
+    text-align: center;
+}
+
+.comments-rating-container{
+    display: inline-block;
+    padding: 0 1rem;    
+
+}
+
+.comment-form-textarea{
+
+    display: inline-block;
+    margin: 0 auto 1rem auto;  
+    width: 80%;	
+    border-radius: 20px;
+    outline: none;
+    padding: 10px;
+    font-size: 1em;
+    color: #676767;
+    transition: border 0.5s;
+    border: solid 2px rgba(240,153,218,.5);
+    height: 10rem;	
+    resize: none; 
+    overflow: auto;	
+    
+        
+    }
+
+.comment-form-textarea:focus{
+        border: solid 3px rgba(240,67,233, .8);	
+    }
+
+.submit-comment{
+        position: static;
+        display: inline-block;
+        margin-bottom: 1rem;
+
+    }
+
+.postNewRecipeTop{
+    margin: 1rem auto ;
+    background-color: rgba(212,175,55, 0.3);
+    padding: 1rem 0 1.4rem 0;
+    
+
+}
+
+.postNewRecipeTop .postNewRecipeTitle{
+        font-size: 1.8rem;
+        color: #8D164F;  
+        text-align: center;  
+        margin-bottom: .6rem; 
+    }
+
+.postNewRecipeTop .postNewRecipeDescription{
+        font-size: .8rem;
+        color: #fff;  
+        width: 80%;
+        margin: 0 auto;
+        font-style: italic;
+        background-color: rgba(212,175,55, 0.8);
+        padding: 1rem 3rem;
+        border-radius: 25%;
+        font-weight: 300;
+    }
+
+.uploaded-image-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+}
+
+.cmb2-wrap .cmb-row.cmb-type-wysiwyg{
+        margin-bottom: 4rem;
+    }
+
+.cmb2-wrap .cmb-row{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+.cmb2-wrap .cmb-row label{
+            margin-left: 2rem;
+            color: #a4119f;
+            font-weight: 500;
+            line-height: 1.1;
+            font-size: 1.4rem;
+        }
+
+.cmb2-wrap .cmb-row textarea, .cmb2-wrap .cmb-row .wp-editor-container {
+            width : 85%;
+            height: 10rem;
+        }
+
+.cmb2-wrap .cmb-row input, .cmb2-wrap .cmb-row select {
+            display: inline-block;
+            margin: 0 auto 1rem auto;  
+            width: 85%;	
+            border-radius: 1rem;
+            outline: none;
+            padding: 10px;
+            font-size: 1em;
+            color: #676767;
+            transition: border 0.5s;
+            border: solid 2px rgba(240,153,218,.5);
+            z-index: 99;
+        }
+
+.cmb2-wrap .cmb-row select > option{
+            background-color: rgba(240,153,218,.1);
+            
+            
+        }
+
+.cmb2-wrap .cmb-row textarea:focus, .cmb2-wrap .cmb-row input:focus {
+            border: solid 3px rgba(240,67,233, .8);	
+        }
+
+.cmb2-wrap .cmb-row .mce-statusbar {
+            display: none;
+        }
+
+.message {
+    font-size: .9rem;
+    margin : 1.5rem 0;
+    text-align: center;
+  }
+
+.message-err {
+      color: #861C22;
+      padding: 1rem 2rem;
+      background-color: rgba(255,50,65,.4);
+      }
+
+.message-red {
+      color: #117031;
+      background-color: rgba(97,176,140,.3);
+      padding: 1rem 2rem;
+    }
+
+.message-err-comment{
+    color: #861C22;
+    padding: .75rem 2rem;
+    font-size:.9rem;
+    background-color: rgba(255,50,65,.7);
+    text-align: center;
+}
+
+.message-err-postRecipe {
+    width: 85%;
+    border-radius: 10%;
+    margin-bottom: .4rem;
+    padding-top: .4rem ;
+    padding-bottom: .4rem ;
+    font-size: .9rem;
+    color: #861C22;
+    background-color: rgba(255,50,65,.4);
+    text-align: center;
+
+}
+
+.border-red {
+border: 3px solid red !important ;
+}
+
+

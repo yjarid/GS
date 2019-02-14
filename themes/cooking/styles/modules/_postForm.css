@@ -1,0 +1,93 @@
+.postNewRecipeTop{
+    margin: 1rem auto ;
+    background-color: rgba(#D4AF37, 0.3) ;
+    padding: 1rem 0 1.4rem 0;
+
+
+
+    .postNewRecipeTitle{
+        font-size: 1.8rem;
+        color: #8D164F;  
+        text-align: center;  
+        margin-bottom: .6rem; 
+    }
+
+    .postNewRecipeDescription{
+        font-size: .8rem;
+        color: #fff;  
+        width: 80%;
+        margin: 0 auto;
+        font-style: italic;
+        background-color: rgba(#D4AF37, 0.8) ;
+        padding: 1rem 3rem;
+        border-radius: 25%;
+        font-weight: 300;
+    }
+    
+
+}
+.uploaded-image-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+}
+
+.cmb2-wrap{
+
+    .cmb-row.cmb-type-wysiwyg{
+        margin-bottom: 4rem;
+    }
+
+    .cmb-row{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        label{
+            margin-left: 2rem;
+            color: $mainPurple;
+            font-weight: 500;
+            line-height: 1.1;
+            font-size: 1.4rem;
+        }
+
+        textarea, .wp-editor-container {
+            width : 85%;
+            height: 10rem;
+        }
+
+        input, select {
+            display: inline-block;
+            margin: 0 auto 1rem auto;  
+            width: 85%;	
+            border-radius: 1rem;
+            outline: none;
+            padding: 10px;
+            font-size: 1em;
+            color: #676767;
+            transition: border 0.5s;
+            border: solid 2px rgba(240,153,218,.5);
+            z-index: 99;
+        }
+
+        select > option{
+            background-color:rgba(240,153,218,.1);
+            
+            
+        }
+
+
+        textarea:focus, input:focus {
+            border: solid 3px rgba($lightPurple, .8);	
+        }
+
+        .mce-statusbar {
+            display: none;
+        }
+    }
+
+  
+}
+
+
+
+

@@ -27,15 +27,9 @@ section {
 
 }
 
-
-/* Block Container */
-.container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 16px;
-  position: relative;
+.hidden {
+  display: none;
 }
 
-.container--narrow {
-  max-width: 960px;
-}
+
+

@@ -140,3 +140,98 @@ $cmb_term = new_cmb2_box( array(
 
 
 add_action( 'cmb2_admin_init', 'GS_register_demo_metabox' );
+
+
+
+//*************************** */
+//  new recipe CMB2 Fields 
+// *****************************
+
+
+
+function newRecipeIngredient( $args , $field ) {
+	// the default value for the recipe ingredients 
+	$postMeta = get_post_meta( get_the_id() , 'post_meta', true ) ;
+	
+
+	$ingredient = isset($postMeta['post_ingredient']) ? $postMeta['post_ingredient'] : '';
+	$desc = isset($postMeta['post_desc']) ? $postMeta['post_desc'] : '';
+
+	if($args['name'] == 'Ingredients'){
+		return $ingredient;
+	} else if($args['name'] == 'Description') {
+		return $desc;
+	}
+		
+}
+
+function yj_render_row_cb($field_args, $field ){
+
+	$id = get_the_id();
+	?>
+	<div class="admin_images_container" > 
+		<?php
+			$attachements = get_attached_media( 'image', $id ) ;
+				
+				foreach( $attachements as $attach) {  ?>     			
+					<div class="admin_image">
+						<img src="<?php echo esc_url(wp_get_attachment_image_src($attach->ID, 'thumbnail')[0]) ?>" alt="" title="" data-post=<?php echo $id ?> data-img=<?php echo $attach->ID ?>  />
+						<div class="admin_image_action">
+							<span  class="admin_image_delete">Delete</span>
+							<span class="admin_image_setFI">Set Featured</span>
+						</div>	
+					</div>				
+			<?php } ?>
+
+	</div>
+<?php }
+
+
+
+function yj_postNewRecipe_adminField(){
+
+	$prefix = 'GS_';
+
+	
+
+	
+$newRecipeFields = new_cmb2_box( array(
+	'id'           => $prefix .'newRecipeData',
+	'title'        => __( 'New Recipe Data', 'yourtextdomain' ),
+	'object_types' => array( 'recipe' ), // Post type
+	'context'      => 'normal',
+	'priority'     => 'high',
+	'show_names'   => false, // Show field names on the left
+	
+) );
+
+$newRecipeFields->add_field( array(
+	'default_cb' => 'newRecipeIngredient',
+	'name'    => __( 'Ingredients', 'GS' ),
+	'desc'    => __( 'edit the Ingredients field', 'GS' ),
+	'id'      => $prefix . 'ingredients_edit',
+	'type'    => 'wysiwyg',
+	
+	'options' => array(
+		'media_buttons' => false,
+	),
+) );
+
+$newRecipeFields->add_field( array(
+	'default_cb' =>  'newRecipeIngredient',
+	'name'       => __( 'Description', 'GS' ),
+	'id'         => $prefix . 'description_edit',
+	'type'       => 'textarea',
+) );
+
+
+$newRecipeFields->add_field( array(
+	'name' => esc_html__( 'Post Images', 'cmb2' ),
+	'id'   => $prefix . 'admin_post_img',
+	'type' => 'text',
+	 'render_row_cb' => 'yj_render_row_cb',
+) );
+
+}
+
+add_action( 'cmb2_admin_init', 'yj_postNewRecipe_adminField' );
