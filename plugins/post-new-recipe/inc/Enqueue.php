@@ -1,15 +1,14 @@
 <?php
 /**
- * @package  PersonalizeLogin
+ * @package  NewPOSTForm
  */
-namespace Login;
+namespace NewPost;
 
-use \Login\BaseController;
 
 /**
 *
 */
-class Enqueue extends BaseController
+class Enqueue 
 {
 	// public function register() {
 	// 	add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );

@@ -2,7 +2,7 @@
 /**
  * @package  AlecadddPlugin
  */
-namespace Inc;
+namespace Login;
 
 class Activate
 {

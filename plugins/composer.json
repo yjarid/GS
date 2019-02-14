@@ -12,6 +12,13 @@
     "minimum-stability": "dev",
     "require": {},
     "autoload": {
-        "psr-4": {"Inc\\": "./inc"}
+        "psr-4": {
+            "Login\\": "./Personalize-Login/inc/",
+            "NewPost\\": "./post-new-recipe/inc/"
+        },
+        "classmap": [
+            "./Personalize-Login/inc/",
+            "./post-new-recipe/inc/"
+          ]
     }
 }

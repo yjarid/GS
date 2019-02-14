@@ -2,7 +2,7 @@
 /**
  * @package  PersonalizeLogin
  */
-namespace Inc;
+namespace Login;
 
 class BaseController
 {

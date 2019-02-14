@@ -2,9 +2,9 @@
 /**
  * @package  PersonalizeLogin
  */
-namespace Inc;
+namespace Login;
 
-use \Inc\BaseController;
+use \Login\BaseController;
 
 /**
 *

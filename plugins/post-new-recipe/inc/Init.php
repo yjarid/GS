@@ -1,8 +1,8 @@
 <?php
 /**
- * @package  AlecadddPlugin
+ * @package  NewPostForm
  */
-namespace Login;
+namespace NewPOST;
 
 final class Init
 {
@@ -13,12 +13,7 @@ final class Init
 	public static function get_services()
 	{
 		return [
-			Login::class,
 			Enqueue::class,
-			Register::class,
-			LostPass::class,
-			ResetPass::class,
-			Redirect::class,
 		];
 	}
 

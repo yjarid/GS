@@ -13,15 +13,15 @@
  defined( 'ABSPATH' ) or die( 'Hey, what are you doing here? You silly human!' );
 
  // Require once the Composer Autoload
- if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
- 	require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+ if ( file_exists( dirname(dirname( __FILE__ ) ). '/vendor/autoload.php' ) ) {
+ 	require_once dirname(dirname( __FILE__ ) ) . '/vendor/autoload.php';
  }
 
  /**
   * The code that runs during plugin activation
   */
      function GS_activate_plugin() {
-     	Inc\Activate::activate();
+     	Login\Activate::activate();
      }
      register_activation_hook( __FILE__, 'GS_activate_plugin' );
 
@@ -36,6 +36,6 @@
  /**
   * Initialize all the core classes of the plugin
   */
- if ( class_exists( 'Inc\\Init' ) ) {
- 	Inc\Init::register_services();
+ if ( class_exists( 'Login\\Init' ) ) {
+ 	Login\Init::register_services();
  }
