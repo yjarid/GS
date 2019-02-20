@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Profile\\' => array($baseDir . '/profile-page/inc'),
     'NewPost\\' => array($baseDir . '/post-new-recipe/inc'),
     'Login\\' => array($baseDir . '/Personalize-Login/inc'),
+    'Comment\\' => array($baseDir . '/recipe-comment/inc'),
 );

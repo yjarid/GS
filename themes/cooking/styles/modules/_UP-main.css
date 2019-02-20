@@ -3,7 +3,7 @@
 .nav-tabs{
     display: grid;
     grid-template-columns: repeat(5,1fr);
-    width: 70%;
+    width: 92%;
     justify-items: center;
     grid-gap: 4px;
     
@@ -12,7 +12,7 @@
   li {
     margin: 4px 0px;
     list-style: none;
-    padding: 3px 0px;
+    padding: .4rem 0;
     text-align: center;
     border: 1px solid #ddd;
     background-color: $mainPurple;
@@ -22,7 +22,7 @@
     @mixin large {
       border: 3px solid #F043E9;
       margin-right: 3%;
-      padding: 4px 0px;
+      padding: .4rem 0;
       background-color: blueviolet;
 
     }
@@ -62,4 +62,12 @@ li.active {
         margin: 2rem auto;
 
     }
+}
+
+/* Reporting Section  */
+
+.profile-rep{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+
 }

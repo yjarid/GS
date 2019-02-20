@@ -1,36 +1,16 @@
 <?php
 
 require get_theme_file_path('/incl_func/search-route.php');
-require get_theme_file_path('/incl_func/post-form.php');
-require get_theme_file_path('/incl_func/profile-page.php');
-require get_theme_file_path('/incl_func/admin-func.php');
 require get_theme_file_path('/incl_func/view-count.php');
 require get_theme_file_path('/incl_func/ajax-sortPost.php');
 require get_theme_file_path('/incl_func/ajax-filterPost.php');
 require get_theme_file_path('/incl_func/ajax-loadMore.php');
-require get_theme_file_path('/incl_func/ajax-registerOrLogin.php');
-require get_theme_file_path('/incl_func/ajax-userProfile.php');
 require get_theme_file_path('/incl_func/ajax-followChef.php');
 require get_theme_file_path('/incl_func/format-comment.php');
-require get_theme_file_path('/incl_func/ajax-newPostForm.php');
 
 
 // Remove the WordPress Admin top Toolbar
 add_filter('show_admin_bar', '__return_false');
-
-
-// Enqueue scripts for all admin pages.
-add_action('admin_enqueue_scripts', 'admin_main_files');
-
-function admin_main_files() {
-   wp_enqueue_script('admin_js', get_theme_file_uri('scripts/admin.js'), array('jquery'), '1.0', true);
-   wp_enqueue_style('admin_style', get_theme_file_uri('admin-style.css'));
-   wp_localize_script('admin_js', 'jsData', array(
-    'root_url' => get_site_url(),
-    	'ajax_url' => site_url() . '/wp-admin/admin-ajax.php',
-      'rest_nonce' => wp_create_nonce( 'wp_rest' ),
-  ) );
-}
 
 
 add_action('wp_enqueue_scripts', 'main_files');

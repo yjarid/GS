@@ -1,8 +1,10 @@
 <?php
 /**
- * @package  
+ * @package  NewPostForm
  */
-namespace Login;
+namespace NewPost;
+
+
 
 final class Init
 {
@@ -13,12 +15,9 @@ final class Init
 	public static function get_services()
 	{
 		return [
-			Login::class,
+			AdminNewRecipe::class,
+			NewRecipe::class,
 			Enqueue::class,
-			Register::class,
-			LostPass::class,
-			ResetPass::class,
-			Redirect::class,
 			AjaxHandler::class,
 		];
 	}

@@ -4,7 +4,7 @@
  */
 namespace Login;
 
-use \Login\BaseController;
+use Login\BaseController;
 
 
 /**

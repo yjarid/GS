@@ -24,6 +24,7 @@ class FilterPost {
 
 
 submitForm() {
+  console.log('from Dropdown');
   var buttonHidden = false;
   var that = this;
   var meal = this.filterForm.find("#meal").val();

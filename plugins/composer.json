@@ -14,11 +14,17 @@
     "autoload": {
         "psr-4": {
             "Login\\": "./Personalize-Login/inc/",
-            "NewPost\\": "./post-new-recipe/inc/"
+            "NewPost\\": "./post-new-recipe/inc/",
+            "Profile\\": "./profile-page/inc/",
+            "Comment\\": "./recipe-comment/inc/"
+
         },
         "classmap": [
             "./Personalize-Login/inc/",
-            "./post-new-recipe/inc/"
+            "./post-new-recipe/inc/",
+            "./profile-page/inc/",
+            "./recipe-comment/inc/"
+
           ]
     }
 }

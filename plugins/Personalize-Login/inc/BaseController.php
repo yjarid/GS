@@ -15,7 +15,7 @@ class BaseController
 	public function __construct() {
 		$this->plugin_path = plugin_dir_path( dirname( __FILE__ ) );
 		$this->plugin_url = plugin_dir_url( dirname( __FILE__) );
-		$this->plugin = plugin_basename( dirname( __FILE__, 2 ) ) . '/personalize.php';
+		$this->plugin = plugin_basename( dirname( __FILE__, 2 ) ) . '/personalize-login.php';
 	}
 
   protected function get_template_html( $template_name, $attributes = null ) {

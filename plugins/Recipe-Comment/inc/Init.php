@@ -2,7 +2,7 @@
 /**
  * @package  
  */
-namespace Login;
+namespace Comment;
 
 final class Init
 {
@@ -13,13 +13,9 @@ final class Init
 	public static function get_services()
 	{
 		return [
-			Login::class,
-			Enqueue::class,
-			Register::class,
-			LostPass::class,
-			ResetPass::class,
-			Redirect::class,
-			AjaxHandler::class,
+            CommentRating::class,
+            
+		
 		];
 	}
 

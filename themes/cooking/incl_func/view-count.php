@@ -121,7 +121,7 @@ function getPostViews($postID, $meta) {
     return $count.' views';
 }
 
-// display user Views
+// display TERM  Views
 
     function getTermViews($ID, $meta) {
         $count = get_term_meta($ID, $meta, true);
@@ -131,6 +131,8 @@ function getPostViews($postID, $meta) {
         }
         return $count.' Views';
     }
+
+    // display TERM  Views
 
     function getUserViews($ID, $meta) {
         $count = get_user_meta($ID, $meta, true);

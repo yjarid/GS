@@ -2,7 +2,7 @@
 /**
  * @package  
  */
-namespace Login;
+namespace Profile;
 
 final class Init
 {
@@ -13,13 +13,11 @@ final class Init
 	public static function get_services()
 	{
 		return [
-			Login::class,
-			Enqueue::class,
-			Register::class,
-			LostPass::class,
-			ResetPass::class,
-			Redirect::class,
-			AjaxHandler::class,
+             EditProfile::class,
+             BaseController::class,
+			 ajax\SubPage::class,
+			 ReportRoute::class
+		
 		];
 	}
 
