@@ -16,12 +16,18 @@ class LoadMore {
     }
 
     loadMorefunc(button) {
+      
 
       if(!this.loading) {
-        button.data.clickedButton.find(".text").slideUp(400);
-        button.data.clickedButton.find(".icon").addClass("spin");
         var page =  button.data.clickedButton.data('page') ;
         var max_pages = button.data.clickedButton.data('max');
+        if(max_pages === 1){
+          button.data.clickedButton.hide();
+          return false;
+        }
+        button.data.clickedButton.find(".text").slideUp(400);
+        button.data.clickedButton.find(".icon").addClass("spin");
+     
         this.loading = true;
         var newpage = page +1;
 
@@ -30,14 +36,12 @@ class LoadMore {
         }
 
         if(button.data.clickedButton == this.loadMoreFilter){
-          console.log('filter');
           var filterForm = $('#filter');
           var meal = filterForm.find("#meal").val();
           var ingredient = filterForm.find("#ingredient").val();
         }
 
         if(button.data.clickedButton == this.loadMoreSort) {
-          console.log('sort');
           var sortBy = $('#sortBy');
           var sortByValue = sortBy.val();
           var tax = sortBy.data('tax');
@@ -64,6 +68,7 @@ class LoadMore {
 
             success : ( data )=> {
               if( data ) {
+                console.log(data);
 
                 button.data.clickedButton.data('page', newpage ) ;
 

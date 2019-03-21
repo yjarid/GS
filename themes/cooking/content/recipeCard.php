@@ -1,3 +1,6 @@
+<?php
+use \GS\Data\ViewsData;
+?>
 
  <div class="contentCardContainer">
 
@@ -9,10 +12,7 @@
       <span class="cardTitle"><?php the_title( ) ; ?> </span>
       <span class="cardViews">
         <?php
-        $t=date('d-m-Y');
-        $month = date("M",strtotime($t));
-        $year = date("Y",strtotime($t));
-        echo getPostViews(get_the_id(), 'views_count_'.$year)
+        echo ViewsData::getPostViews(get_the_id(), 'Year') . ' Views' ;
         ?>
       </span>
       <div class="cardDescription">

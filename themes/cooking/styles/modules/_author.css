@@ -57,33 +57,52 @@
 
 }
 
-#loginOverlay {
-    position: fixed; /* Sit on top of the page content */
-    display: block; /* Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0; 
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba($mainPurple,0.3); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
+.loginOverlay{
+    display: none;
+}
 
-    .loginOverlay-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        color: white;
-        transform: translate(-50%,-50%);
-        padding: 4rem 6rem ;
-        background-color: rgba($mainPurple, 0.7);
-        text-align: center;
 
-        .loginOverlay-title{
-            margin-bottom: 1rem;
+.loginOverlay--active {
+        position: fixed; /* Sit on top of the page content */
+        display: block; /* Hidden by default */
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%; /* Full height (cover the whole page) */
+        top: 0; 
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba($mainPurple,0.3); /* Black background with opacity */
+        z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    
+        .loginOverlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: white;
+            transform: translate(-50%,-50%);
+            padding: 4rem 6rem ;
+            background-color: rgba($mainPurple, 0.7);
+            text-align: center;
+    
+            .close-loginOverlay{
+                position : absolute;
+                font-size: .7rem;
+                top: 0;
+                right: 0;
+                padding: .2rem .3rem;
+                border: 2px solid #fff;
+                border-radius: 50%;
+                cursor: pointer;
+    
+    
+            }
+    
+            .loginOverlay-title{
+                margin-bottom: 1rem;
+            }
         }
-    }
-  }
+      }
+    
+
 
   

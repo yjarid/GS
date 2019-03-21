@@ -15,6 +15,10 @@ class ComposerStaticInit9f86b62eff73c2e59d4535ddc6a85c78
         array (
             'NewPost\\' => 8,
         ),
+        'M' => 
+        array (
+            'Message\\' => 8,
+        ),
         'L' => 
         array (
             'Login\\' => 6,
@@ -32,7 +36,11 @@ class ComposerStaticInit9f86b62eff73c2e59d4535ddc6a85c78
         ),
         'NewPost\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/post-new-recipe/inc',
+            0 => __DIR__ . '/../..' . '/New-Recipe/inc',
+        ),
+        'Message\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Private-Messages/inc',
         ),
         'Login\\' => 
         array (
@@ -45,6 +53,10 @@ class ComposerStaticInit9f86b62eff73c2e59d4535ddc6a85c78
     );
 
     public static $classMap = array (
+        'Comment\\Activate' => __DIR__ . '/../..' . '/recipe-comment/inc/Activate.php',
+        'Comment\\BaseController' => __DIR__ . '/../..' . '/recipe-comment/inc/BaseController.php',
+        'Comment\\CommentRating' => __DIR__ . '/../..' . '/recipe-comment/inc/CommentRating.php',
+        'Comment\\Init' => __DIR__ . '/../..' . '/recipe-comment/inc/Init.php',
         'Login\\Activate' => __DIR__ . '/../..' . '/Personalize-Login/inc/Activate.php',
         'Login\\AjaxHandler' => __DIR__ . '/../..' . '/Personalize-Login/inc/AjaxHandler.php',
         'Login\\BaseController' => __DIR__ . '/../..' . '/Personalize-Login/inc/BaseController.php',
@@ -55,18 +67,22 @@ class ComposerStaticInit9f86b62eff73c2e59d4535ddc6a85c78
         'Login\\Redirect' => __DIR__ . '/../..' . '/Personalize-Login/inc/Redirect.php',
         'Login\\Register' => __DIR__ . '/../..' . '/Personalize-Login/inc/Register.php',
         'Login\\ResetPass' => __DIR__ . '/../..' . '/Personalize-Login/inc/ResetPass.php',
-        'NewPost\\Activate' => __DIR__ . '/../..' . '/post-new-recipe/inc/Activate.php',
-        'NewPost\\AdminNewRecipe' => __DIR__ . '/../..' . '/post-new-recipe/inc/AdminNewRecipe.php',
-        'NewPost\\AjaxHandler' => __DIR__ . '/../..' . '/post-new-recipe/inc/AjaxHandler.php',
-        'NewPost\\BaseController' => __DIR__ . '/../..' . '/post-new-recipe/inc/BaseController.php',
-        'NewPost\\CommentRating' => __DIR__ . '/../..' . '/recipe-comment/inc/commentRating.php',
-        'NewPost\\Enqueue' => __DIR__ . '/../..' . '/post-new-recipe/inc/Enqueue.php',
-        'NewPost\\Init' => __DIR__ . '/../..' . '/post-new-recipe/inc/Init.php',
-        'NewPost\\NewRecipe' => __DIR__ . '/../..' . '/post-new-recipe/inc/NewRecipe.php',
+        'Message\\Activate' => __DIR__ . '/../..' . '/Private-Messages/inc/Activate.php',
+        'Message\\Init' => __DIR__ . '/../..' . '/Private-Messages/inc/Init.php',
+        'NewPost\\Activate' => __DIR__ . '/../..' . '/New-Recipe/inc/Activate.php',
+        'NewPost\\AdminNewRecipe' => __DIR__ . '/../..' . '/New-Recipe/inc/AdminNewRecipe.php',
+        'NewPost\\AjaxHandler' => __DIR__ . '/../..' . '/New-Recipe/inc/AjaxHandler.php',
+        'NewPost\\BaseController' => __DIR__ . '/../..' . '/New-Recipe/inc/BaseController.php',
+        'NewPost\\Enqueue' => __DIR__ . '/../..' . '/New-Recipe/inc/Enqueue.php',
+        'NewPost\\Init' => __DIR__ . '/../..' . '/New-Recipe/inc/Init.php',
+        'NewPost\\NewRecipe' => __DIR__ . '/../..' . '/New-Recipe/inc/NewRecipe.php',
         'Profile\\Activate' => __DIR__ . '/../..' . '/profile-page/inc/Activate.php',
         'Profile\\BaseController' => __DIR__ . '/../..' . '/profile-page/inc/BaseController.php',
         'Profile\\EditProfile' => __DIR__ . '/../..' . '/profile-page/inc/EditProfile.php',
+        'Profile\\IPViewsRoute' => __DIR__ . '/../..' . '/profile-page/inc/IPViewsRoute.php',
         'Profile\\Init' => __DIR__ . '/../..' . '/profile-page/inc/init.php',
+        'Profile\\LoveMadeRoute' => __DIR__ . '/../..' . '/profile-page/inc/LoveMadeRoute.php',
+        'Profile\\ReportRoute' => __DIR__ . '/../..' . '/profile-page/inc/ReportRoute.php',
         'Profile\\ajax\\SubPage' => __DIR__ . '/../..' . '/profile-page/inc/ajax/SubPage.php',
     );
 

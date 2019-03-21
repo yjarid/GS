@@ -14,16 +14,19 @@
     "autoload": {
         "psr-4": {
             "Login\\": "./Personalize-Login/inc/",
-            "NewPost\\": "./post-new-recipe/inc/",
+            "NewPost\\": "./New-Recipe/inc/",
             "Profile\\": "./profile-page/inc/",
-            "Comment\\": "./recipe-comment/inc/"
+            "Comment\\": "./recipe-comment/inc/",
+            "Message\\": "./Private-Messages/inc/"
+           
 
         },
         "classmap": [
             "./Personalize-Login/inc/",
-            "./post-new-recipe/inc/",
+            "./New-Recipe/inc/",
             "./profile-page/inc/",
-            "./recipe-comment/inc/"
+            "./recipe-comment/inc/",
+            "./Private-Messages/inc/"
 
           ]
     }

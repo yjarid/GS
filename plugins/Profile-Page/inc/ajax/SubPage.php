@@ -22,39 +22,36 @@ class SubPage extends BaseController
 
 function userProfileSubPage(){
 
-check_ajax_referer( 'sortNonce', 'nonceSort' );
+ check_ajax_referer( 'sortNonce', 'nonceSort' );
 
-if( defined( 'DOING_AJAX' ) && DOING_AJAX) {
+ if( defined( 'DOING_AJAX' ) && DOING_AJAX) {
 
-  $anchor = $_POST['anchor'];
+   $anchor = $_POST['anchor'];
 
   
   
     ob_start();
 
     switch ($anchor) {
-        case 'profile':
-         require_once( "$this->plugin_path/views/mainProfile.php" );
-        break;
-
+       
         case 'recipe':
-        require_once( "$this->plugin_path/views/myRecipes.php" );
+        require_once( "$this->plugin_path/inc/Views/myRecipes.php" );
         break;
 
-        case 'fav':
-        require_once( "$this->plugin_path/views/myFavorite.php" );
+        case 'com':
+        require_once( "$this->plugin_path/inc/views/inTouch.php" );
         break;
 
         case 'friend':
-        require_once( "$this->plugin_path/views/myFriends.php" );
+        require_once( "$this->plugin_path/inc/views/myFriends.php" );
         break;
 
         case 'made':
-        require_once( "$this->plugin_path/views/madeIt.php" );
+        require_once( "$this->plugin_path/inc/views/madeIt.php" );
         break;
     }
     
-    $html = ob_get_contents(); // we pass the posts to variable
+    $html = ob_get_contents(); 
     ob_end_clean();
 
     $json = array('html'=>$html, 'status'=>true);
@@ -62,7 +59,7 @@ if( defined( 'DOING_AJAX' ) && DOING_AJAX) {
        echo json_encode($json);
 
 
-    }
+     }
 
     die();
 

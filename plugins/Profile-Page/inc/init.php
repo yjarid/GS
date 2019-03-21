@@ -16,7 +16,9 @@ final class Init
              EditProfile::class,
              BaseController::class,
 			 ajax\SubPage::class,
-			 ReportRoute::class
+			 ReportRoute::class,
+			 LoveMadeRoute::class,
+			 IPViewsRoute::class
 		
 		];
 	}

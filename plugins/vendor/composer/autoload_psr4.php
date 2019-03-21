@@ -7,7 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Profile\\' => array($baseDir . '/profile-page/inc'),
-    'NewPost\\' => array($baseDir . '/post-new-recipe/inc'),
+    'NewPost\\' => array($baseDir . '/New-Recipe/inc'),
+    'Message\\' => array($baseDir . '/Private-Messages/inc'),
     'Login\\' => array($baseDir . '/Personalize-Login/inc'),
     'Comment\\' => array($baseDir . '/recipe-comment/inc'),
 );

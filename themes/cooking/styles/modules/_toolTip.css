@@ -1,0 +1,21 @@
+.tooltip {
+   display: none;
+  width: 120px;
+  font-size: .6rem;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin : 0 auto ;
+
+
+  /* Position the tooltip */
+  /* position: absolute;
+  z-index: 1; */
+}
+
+.tpCont:hover .tooltip {
+  display : block;
+}
+

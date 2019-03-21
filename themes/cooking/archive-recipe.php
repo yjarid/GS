@@ -47,7 +47,7 @@ get_header();
     </div>
   </div>
 
-<div class="loadMoreButton" id="loadMoreButtonFilter" data-page="1"  data-max="1">
+<div class="loadMoreButton" id="loadMoreButtonFilter" data-page="1"  data-max="<?php echo $wp_query->max_num_pages;?>">
   <div class="loadMoreButton--Container">
     <span class="icon--refresh icon"></span>
     <span class="loadMoreButton--text text" > Load More </span>

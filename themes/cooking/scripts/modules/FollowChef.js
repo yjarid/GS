@@ -3,11 +3,10 @@ class FollowChef {
     // 1. describe and create/initiate our object
 
     constructor() {
-
       this.followBtn = $("#auth-follow");
+      this.Modal = $("#checkLoginOverlay");
       this.events();
 
-      console.log('htht');
       
     }
 
@@ -24,20 +23,11 @@ class FollowChef {
       var that = this;
       let user = this.followBtn.data('user');
       let chefToFollow = this.followBtn.data('auth');
-      let isFollowing = this.followBtn.data('auth');
+      let isFollowing = this.followBtn.data('follow');
 
    
       if(!user) {
-        $("body").append(`
-        <div id="loginOverlay">
-         <div class="loginOverlay-content">
-
-          <h4 class="loginOverlay-title">This Action is for Member Only ! </h4>
-          <a href="${jsData.root_url }/login "> <p class="btn btn--author">Please Login </p></a>
-
-         </div>
-        </div>
-        `);
+        this.Modal.addClass("loginOverlay--active");
         return;
       }
        
@@ -60,9 +50,9 @@ class FollowChef {
         success : ( data )=> {
 
            if( data.status =="follow" ) {
-              this.followBtn.addClass("following").text("Unfollow");    
+              that.followBtn.data('follow', 'yes').addClass("following").text("Unfollow");    
           } else if ( data.status ==="unFollow" ) {
-              this.followBtn.removeClass("following").text("+Follow"); 
+              that.followBtn.data('follow', 'no').removeClass("following").text("+Follow"); 
           }
 
         },
@@ -75,6 +65,7 @@ class FollowChef {
       return false;
 
    }
+
 }
 
 export default FollowChef;

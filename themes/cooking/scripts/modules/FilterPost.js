@@ -24,7 +24,7 @@ class FilterPost {
 
 
 submitForm() {
-  console.log('from Dropdown');
+ 
   var buttonHidden = false;
   var that = this;
   var meal = this.filterForm.find("#meal").val();
@@ -51,6 +51,7 @@ submitForm() {
 
           var maxPage = data.max;
           that.loadMoreFilter.data('max', maxPage);
+          
 
           if(that.loadMoreFilter.data('max') == 1) {
             that.loadMoreFilter.hide();

@@ -20,18 +20,8 @@ class ReportRoute
       ));
   }
 
-  function reportingProfileResults(\WP_REST_Request $request){
-    $user_args = array(
-        //'role__not_in' => 'Administrator',
-        'number' => '6',
-        'include' => array($request["id"]),
-    );
-
-    $PopularChefs = new \WP_User_Query($user_args);
-
-    foreach($PopularChefs->get_results() as $chef) {
-      $id=  esc_attr( $chef->ID );   
-    }
+  function reportingProfileResults( $request){
+    
     $t = [
         date('d-m-Y', strtotime("-5 month")),
         date('d-m-Y', strtotime("-4 month")),
@@ -44,17 +34,29 @@ class ReportRoute
     
     $results = [
       'views'=> [],
-      'likes' => []
+      'love' => [],
+      'made' => []
     ];
     foreach($t as $date) {
         $month = date("M",strtotime($date));
-        $year = date("Y",strtotime($date));
-        $month_key = 'user_count_'.$month.'_'.$year;
-        $metaValue =  get_user_meta($id, $month_key  , true) ;
+        $year = date("Y",strtotime($date)); 
+        $id = $request["id"] ;
+        $views =  get_user_meta($id, 'user_views_'.$month.'_'.$year  , true) ;
+        $love =  get_user_meta($id, 'user_love_'.$month.'_'.$year  , true) ;
+        $made =  get_user_meta($id, 'user_made_'.$month.'_'.$year  , true) ;
+        
 
-        $results['views'][ $month] = $metaValue ;
+        $results['views'][ $month] = $views ;
+        $results['love'][ $month] = $love ;
+        $results['made'][ $month] = $made ;
 
       }
+      $viewsByCountry = get_user_meta($id, 'user_views_byCountry'  , true);
+      $viewsByCountry = (!empty($viewsByCountry) ? $viewsByCountry : []);
+
+       arsort($viewsByCountry) ;
+
+      $results['viewsCountry'] = $viewsByCountry;
 
       return $results;
  

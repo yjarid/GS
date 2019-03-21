@@ -12,7 +12,7 @@ class NewRecipe
   public function register() {
     add_action( 'cmb2_init', array( $this , 'cmb2_frontend_form') );
     add_shortcode( 'cmb_frontend_form', array( $this, 'form_shortcode') );
-    add_action( 'cmb2_after_init', array( $this, 'handle_form_submission' ));
+		add_action( 'cmb2_after_init', array( $this, 'handle_form_submission' ));
   
   }
 

@@ -1,6 +1,11 @@
 
 <?php session_start();
-get_header();?>
+get_header();
+
+use GS\Data\ViewsData;
+use GS\DisplayFunc;
+
+?>
 <div class="wrapper">
   <section>
       <h2 class="cardsTitle">What's Trending!!</h2>
@@ -59,41 +64,15 @@ get_header();?>
   <h2 class="cardsTitle">Famous Chefs</h2>
   <div class="categoryGrid">
     <?php
-    $t=date('d-m-Y');
-    $month = date("M",strtotime($t));
-    $year = date("Y",strtotime($t));
+    $date = DisplayFunc::getDate();
 
-    $user_args = array(
-            //'role__not_in' => 'Administrator',
-            'number' => '6',
-            'meta_key' => 'user_count_'.$year,
-            'orderby' => 'meta_value_num',
-            'order' => 'DESC'
-        );
+  // to get the paged number based on the number of the day in the month
+    $paged = DisplayFunc::getPaged($date['J']);
 
-        $PopularChefs = new WP_User_Query($user_args);
-
-        foreach($PopularChefs->get_results() as $chef) {
-          $id=  esc_attr( $chef->ID );
-          $name = esc_html($chef->display_name);
-          $img_url = esc_url( get_user_meta($id, 'picture', true)) ;
-          $url =get_author_posts_url($id) ;
-          $alt = 'hello';
-          ?>
-
-          <div class="categoryCard">
-            <a href="<?php echo $url ?>" class="categoryCardLink">
-                <div class="categoryImg">
-                    <img src="<?php echo $img_url ?>" class="categoryCardImage" alt="<?php echo $alt; ?>">
-                </div>
-            </a>
-            <div class="categoryCardTitle">
-              <span class="categoryText"><?php echo $name;  ?></span>
-              <span class="categoryViews"><?php echo getUserViews($id, 'user_count_'.$year )  ?> </span>
-            </div>
-
-          </div>
-      <?php  }     ?>
+  // display the users based on GS rating diff and by day of the month
+    DisplayFunc::displayUser(1 , 'GSRating_diff' ,'chefCard',  [], $paged );
+    
+  ?>
 
 </section>
 
@@ -108,35 +87,26 @@ get_header();?>
     $tax = array(
             'taxonomy' => 'cuisine',
             'number' => 6,
-            'meta_key' => 'term_count_'.$month.'_'.$year,
+            'meta_key' => 'term_views_'.$date['Y'],
             'orderby' => 'meta_value_num',
             'order' => 'DESC'
         );
 
         $PopularCuisines = new WP_Term_Query($tax);
-
+  
         foreach($PopularCuisines->terms as $term) {
-          $slug = $term->slug;
-          $id=  esc_attr( $term->term_id );
-          $name = esc_html($term->name);
-          $alt = esc_textarea( $term->description  );
-          $img_url = esc_url( get_term_meta($id, 'GS_avatar', true)) ;
-          $term_url = '/cuisine/'.$slug;
-          ?>
+          $data =[];
+          $data['slug'] = $term->slug;
+          $data['id']=  esc_attr( $term->term_id );
+          $data['name'] = esc_html($term->name);
+          $data['alt'] = esc_textarea( $term->description  );
+          $data['img_url'] = esc_url( get_term_meta($data['id'], 'GS_avatar', true)) ;
+          $data['term_url'] = '/cuisine/'.$data['slug'];
+        
+          set_query_var( 'data', $data );
+          get_template_part( 'content/termCard' );
 
-          <div class="categoryCard">
-            <div class="categoryImg">
-              <a href="<?php echo site_url( $term_url )?>" class="categoryCardLink">
-                      <img src="<?php echo $img_url ?>" class="categoryCardImage" alt="<?php echo $alt; ?>">
-            </a>
-            </div>
-
-            <div class="categoryCardTitle">
-              <span class="categoryText"><?php echo $name;  ?></span>
-              <span class="categoryViews"><?php echo getTermViews($id, 'term_count_'.$year )  ?> </span>
-            </div>
-          </div>
-      <?php  }     ?>
+       }     ?>
 
 </section>
 
@@ -158,7 +128,7 @@ get_header();?>
                   'post_status' => 'publish',
                   'post_type' => 'recipe',
                   'posts_per_page' => 5,
-                  'meta_key' => 'views_count_'.$month.'_'.$year,
+                  'meta_key' => 'post_views_'.$date['M'].'_'.$date['Y'],
                   'orderby' => 'meta_value_num',
                   'order' => 'DESC'
               );
@@ -172,7 +142,7 @@ get_header();?>
                 get_template_part( 'content/recipeCard' );
 
          }
-// var_dump($mostViewed->query['meta_key']);
+
          ?>
 
         </div>
@@ -182,7 +152,7 @@ get_header();?>
 
 
     <div class="loadMoreButton" id="loadMoreButton" data-page="1" data-key="
-    <?php echo $mostViewed->query['meta_key'] ?>">
+    <?php echo $mostViewed->query['meta_key'] ?>" data-max="<?php echo $mostViewed->max_num_pages ?>">
       <div class="loadMoreButton--Container">
         <span class="icon--refresh icon"></span>
         <span class="loadMoreButton--text text" > Load More </span>

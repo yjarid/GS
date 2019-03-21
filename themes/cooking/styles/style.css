@@ -25,9 +25,11 @@ Version : 1.0
 @import "modules/_btn";
 @import "modules/_UP-main";
 @import "modules/_UP-edit";
+@import "modules/_UP-other";
 @import "modules/_author";
 @import "modules/_comment";
 @import "modules/_postForm";
 @import "modules/_message";
+@import "modules/_toolTip";
 
 

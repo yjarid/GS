@@ -64,6 +64,18 @@ register_post_type('location', array(
   'menu_icon' => 'dashicons-location-alt'
 ));
 
+register_post_type('message', array(
+  'show_in_rest' => true,
+  'map_meta_cap' => true,
+  'supports' => array('title', 'editor'),
+  'rewrite' => array('slug' => 'messages'),
+  'public' => false,
+   'show_ui'=> true,
+  'labels' => array( 'name' => 'Messages' , 'add_new_item' => 'Add New Message', 'edit_item' => 'Edit Message',
+                      'all_items' => 'All Events', 'singular_name' => 'Message'),
+  'menu_icon' => 'dashicons-email-alt'
+));
+
 
 }
 add_action('init', 'GS_post_type');

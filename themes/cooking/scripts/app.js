@@ -13,6 +13,8 @@ import UserProfile from './modules/UserProfile';
 import FollowChef from './modules/FollowChef';
 import Comment from './modules/Comment';
 import UPChart from './modules/UPChart';
+import Love from './modules/Love';
+import IPViews from './modules/IPViews';
 
 
 var mobileMenu = new MobileMenu();
@@ -29,3 +31,9 @@ var userProfile  = new UserProfile();
 var followChef  = new FollowChef();
 var comment  = new Comment();
 var uPChart  = new UPChart();
+var love  = new Love();
+var ipViews = new IPViews();
+
+
+
+

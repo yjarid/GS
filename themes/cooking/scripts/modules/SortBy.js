@@ -27,6 +27,7 @@ class SortBy {
       var sortBy = this.select.val();
       var term = this.select.data('term');
       var tax = this.select.data('tax');
+
       this.cardsContainerSpinner.html('<div class="spinner-loader"></div>');
 
 

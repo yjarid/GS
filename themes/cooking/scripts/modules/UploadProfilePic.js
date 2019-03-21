@@ -33,9 +33,9 @@ class UploadProfilePic {
      
      this.mediaUploader.on('select' , () => {
        this.attachement = this.mediaUploader.state().get('selection').first().toJSON();
-       console.log(this.attachement);
-       
-       $('#user_picture').val(this.attachement.url);
+       console.log(this.attachement.sizes.thumbnail);
+
+       $('#user_picture').val(this.attachement.sizes.thumbnail.url);
        $('#avatar-image-container').find('img').attr('src', $('#user_picture').val() );
 
      });

@@ -4,7 +4,7 @@ class UserProfile {
 
     constructor() {
 
-      this.tabs = $("#userProfile > li");
+      this.tabs = $("#userProfile > li").not(".main");
       this.contentContainer = $('.tab-content');
       this.events();
     }

@@ -1,0 +1,37 @@
+.UPsectionCont{
+    margin-top: 2rem;
+    padding-top: 2rem;
+
+    &_Title{
+        font-size: 1.5rem;
+        color:$mainPurple;
+        margin-bottom: 2rem;
+        margin-left : 2rem;
+    }
+}
+
+/* css for table in mYrecipes subpage */
+
+#Recipes_table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 1rem auto;
+  }
+  
+  #Recipes_table td, #Recipes_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  #Recipes_table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #Recipes_table tr:hover {background-color: #ddd;}
+  
+  #Recipes_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: $lightPurple;
+    color: white;
+  }

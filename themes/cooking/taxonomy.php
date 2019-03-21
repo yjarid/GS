@@ -1,5 +1,9 @@
 
-<?php get_header(); ?>
+<?php get_header();
+
+use GS\DisplayFunc;
+
+?>
 
 <div class="container ">
 
@@ -8,10 +12,8 @@
 echo get_the_archive_title();
 echo get_the_archive_description();
 
+ $date = DisplayFunc::getDate();
 
-$t=date('d-m-Y');
-$month = date("M",strtotime($t));
-$year = date("Y",strtotime($t));
 ?>
 
 
@@ -22,7 +24,7 @@ $year = date("Y",strtotime($t));
           <label class="toSort1">Sort by :</label>
             <select name="sortBy" id="sortBy" class="toSort2" data-tax="<?php echo get_query_var('taxonomy'); ?>" data-term="<?php echo get_query_var('term'); ?>">
               <option selected=""  value="date">Date</option>
-              <option   value="<?php echo'views_count_'.$month.'_'.$year ?>">Views</option>
+              <option   value="<?php echo'post_views_'.$date['M'].'_'.$date['Y'] ?>">Views</option>
             </select>
 
       </div>
@@ -41,7 +43,7 @@ $year = date("Y",strtotime($t));
   </div>
 
 
-  <div class="loadMoreButton" id="loadMoreButtonSort" data-page="1"  data-max="1">
+  <div class="loadMoreButton" id="loadMoreButtonSort" data-page="1"  data-max="<?php echo $wp_query->max_num_pages;?>">
     <div class="loadMoreButton--Container">
       <span class="icon--refresh icon"></span>
       <span class="loadMoreButton--text text" > Load More </span>

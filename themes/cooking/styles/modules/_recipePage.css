@@ -15,12 +15,88 @@
 }
 
 .recipeMainImg{
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+
+    position: relative;
+    bottom: 0;
+
+    img {
+   
+      display: block;
+      width:100%;
+    
+    }
+
+  
+  
+  .loveitMadeit-section{
+      position: absolute;
+      z-index: 2;
+      bottom: 4px;
+      left: 50%;
+      transform: translatex(-50%);
+      height: 40px;
+
+      .loveMade-btn-cont {
+        position: relative;
+        cursor: pointer;
+        font-size: 13px;
+        height: 30px;
+        padding: 0 48px 0 12px;
+        color: $lightGold;
+        background: #7F0D7C;
+        border: 0;
+        
+        .icon-cont {
+          font-size: 20px;
+          display: block;
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          right: 0;
+          top: 0;
+          background-color:rgba(0,0,0,.2);
+        }
+        .icon {
+            display: block;
+            position: relative;
+            margin : 0 auto;
+            top: 50%;
+            transform: translatey(-50%);
+        }
+
+        .text {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          opacity: 0;
+          visibility: hidden;
+          margin-left: -45px;
+          background-color: rgba(0,0,0,.8);
+          color: #fff;
+          width: 90px;
+          height: 30px;
+          font-size: 14px;
+          line-height: 30px;
+          transition: all .2s ease;
+      }
+    }
+
+    .loveMade-btn-cont:hover .text {
+      top: -40px;
+      opacity: 1;
+      visibility: visible;
+      -webkit-transition: all .2s ease;
+      -o-transition: all .2s ease;
+      transition: all .2s ease;
   }
 
+      .loveMade-btn-cont.active {
+        background-color:$lightGold;
+        color: #7F0D7C;
+    } 
+}
+ 
 }
 
 .recipeMedia {
@@ -44,22 +120,9 @@
 
 /* recipe Info section */
 
-.recipeInfo-section{
-  margin: 1rem 2rem;
-  width: 70%;
-  align-self: center;
-}
 
-.recipeRate, .recipeMade{
-  display: inline-block;
-  width: 40%;
-  padding: .3rem;
-  text-align: center;
-  margin-right: 1rem;
-  border: 2px solid purple;
-  color: purple;
-  border-radius: 2rem;
-}
+
+
 
 .recipeDesc{
   margin-top: 2rem;

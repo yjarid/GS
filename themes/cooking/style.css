@@ -84,7 +84,8 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -442,7 +443,8 @@ section {
 }
 
 .icon:hover {
-  transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
 }
 
 .searchSignUp {
@@ -640,8 +642,11 @@ justify-self: center;
     width: 26px;
     height: 3px;
     background-color: #a4119f;
-    transform-origin: 0 0 ;
+    -webkit-transform-origin: 0 0 ;
+            transform-origin: 0 0 ;
+    transition: -webkit-transform .4s ease-out;
     transition: transform .4s ease-out;
+    transition: transform .4s ease-out, -webkit-transform .4s ease-out;
   }
 
 .menuIcon_midle {
@@ -652,7 +657,8 @@ justify-self: center;
     height: 3px;
     background-color: #a4119f;
     transition: all .4s ease-out;
-    transform-origin: 0 50%;
+    -webkit-transform-origin: 0 50%;
+            transform-origin: 0 50%;
   }
 
 .menuIcon::after {
@@ -663,8 +669,11 @@ justify-self: center;
     width: 26px;
     height: 3px;
     background-color: #a4119f;
-    transform-origin: 0 100%;
+    -webkit-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+    transition: -webkit-transform .4s ease-out;
     transition: transform .4s ease-out;
+    transition: transform .4s ease-out, -webkit-transform .4s ease-out;
   }
 
 @media (min-width: 900px) {
@@ -676,16 +685,19 @@ justify-self: center;
    }
 
 .menuIcon__close::before {
-      transform: rotate(45deg) scaleX(1.25) translateY(-1px);
+      -webkit-transform: rotate(45deg) scaleX(1.25) translateY(-1px);
+              transform: rotate(45deg) scaleX(1.25) translateY(-1px);
     }
 
 .menuIcon__close .menuIcon_midle {
       opacity: 0;
-      transform: scaleX(0);
+      -webkit-transform: scaleX(0);
+              transform: scaleX(0);
     }
 
 .menuIcon__close::after {
-      transform: rotate(-45deg) scaleX(1.25) translateY(2px);
+      -webkit-transform: rotate(-45deg) scaleX(1.25) translateY(2px);
+              transform: rotate(-45deg) scaleX(1.25) translateY(2px);
     }
 
 .headerNav {
@@ -699,7 +711,8 @@ justify-self: center;
 
 .main-navigation {
   opacity: 0;
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
   position: absolute;
   top : 130px;
   left : 0;
@@ -713,7 +726,8 @@ justify-self: center;
 
 .main-navigation-is-visible {
     opacity: 1;
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
 
   }
 
@@ -732,7 +746,8 @@ justify-self: center;
       opacity: 1;
       position: static;
       background-color: transparent;
-      transform: scale(1)
+      -webkit-transform: scale(1);
+              transform: scale(1)
 
 
 }
@@ -884,7 +899,8 @@ ul.child {
   }
 
 .icon:hover {
-    transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
   }
 
 /* Hero Slider */
@@ -1278,11 +1294,89 @@ font-weight: bold;
     color : #8D164F;
 }
 
+.recipeMainImg{
+
+    position: relative;
+    bottom: 0;
+ 
+}
+
 .recipeMainImg img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+   
+      display: block;
+      width:100%;
+    
+    }
+
+.recipeMainImg .loveitMadeit-section{
+      position: absolute;
+      z-index: 2;
+      bottom: 4px;
+      left: 50%;
+      -webkit-transform: translatex(-50%);
+              transform: translatex(-50%);
+      height: 40px; 
+}
+
+.recipeMainImg .loveitMadeit-section .loveMade-btn-cont {
+        position: relative;
+        cursor: pointer;
+        font-size: 13px;
+        height: 30px;
+        padding: 0 48px 0 12px;
+        color: #FDE380;
+        background: #7F0D7C;
+        border: 0;
+    }
+
+.recipeMainImg .loveitMadeit-section .loveMade-btn-cont .icon-cont {
+          font-size: 20px;
+          display: block;
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          right: 0;
+          top: 0;
+          background-color: rgba(0,0,0,.2);
+        }
+
+.recipeMainImg .loveitMadeit-section .loveMade-btn-cont .icon {
+            display: block;
+            position: relative;
+            margin : 0 auto;
+            top: 50%;
+            -webkit-transform: translatey(-50%);
+                    transform: translatey(-50%);
+        }
+
+.recipeMainImg .loveitMadeit-section .loveMade-btn-cont .text {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          opacity: 0;
+          visibility: hidden;
+          margin-left: -45px;
+          background-color: rgba(0,0,0,.8);
+          color: #fff;
+          width: 90px;
+          height: 30px;
+          font-size: 14px;
+          line-height: 30px;
+          transition: all .2s ease;
+      }
+
+.recipeMainImg .loveitMadeit-section .loveMade-btn-cont:hover .text {
+      top: -40px;
+      opacity: 1;
+      visibility: visible;
+      transition: all .2s ease;
   }
+
+.recipeMainImg .loveitMadeit-section .loveMade-btn-cont.active {
+        background-color:#FDE380;
+        color: #7F0D7C;
+    }
 
 .recipeMedia .recipeImg{
   display: block; 
@@ -1290,31 +1384,17 @@ font-weight: bold;
 
 .recipeMedia .recipeImg img {
       display: block;   
-      transition: transform .5s ease;
+      transition: -webkit-transform .5s ease;   
+      transition: transform .5s ease;   
+      transition: transform .5s ease, -webkit-transform .5s ease;
     }
 
 .recipeMedia .recipeImg img:hover{
-    transform: rotate(1deg) scale(1.02);
+    -webkit-transform: rotate(1deg) scale(1.02);
+            transform: rotate(1deg) scale(1.02);
   }
 
 /* recipe Info section */
-
-.recipeInfo-section{
-  margin: 1rem 2rem;
-  width: 70%;
-  align-self: center;
-}
-
-.recipeRate, .recipeMade{
-  display: inline-block;
-  width: 40%;
-  padding: .3rem;
-  text-align: center;
-  margin-right: 1rem;
-  border: 2px solid purple;
-  color: purple;
-  border-radius: 2rem;
-}
 
 .recipeDesc{
   margin-top: 2rem;
@@ -1434,44 +1514,68 @@ color: #fff;
 /* do not edit this file as it is generated auomatically instead edit incl/template/sprite.css */
 
 .icon {
-      background-image: url('incl/img/sprites/css/svg/sprite-24e70ece.svg');
+      background-image: url('incl/img/sprites/css/svg/sprite-5e481525.svg');
       padding: 1px;
   }
 
 .icon--facebook {
   width: 22px ;
   height: 22px ;
-  background-position: 53.191489361702125% 0;
+  background-position: 35.714285714285715% 50%;
 }
 
 .icon--instagram {
   width: 22px ;
   height: 22px ;
-  background-position: 0 100%;
+  background-position: 71.42857142857143% 0;
 }
 
 .icon--love {
   width: 22px ;
   height: 22px ;
-  background-position: 46.808510638297875% 100%;
+  background-position: 71.42857142857143% 44%;
 }
 
-.icon--refresh {
+.icon--love-empty {
+  width: 20px ;
+  height: 20px ;
+  background-position: 61.111111111111114% 96.15384615384616%;
+}
+
+.icon--love-full {
+  width: 20px ;
+  height: 20px ;
+  background-position: 100% 0;
+}
+
+.icon--made-empty {
   width: 25px ;
   height: 25px ;
   background-position: 0 0;
 }
 
+.icon--made-full {
+  width: 25px ;
+  height: 25px ;
+  background-position: 37.3134328358209% 0;
+}
+
+.icon--refresh {
+  width: 25px ;
+  height: 25px ;
+  background-position: 0 53.191489361702125%;
+}
+
 .icon--twiter {
   width: 22px ;
   height: 22px ;
-  background-position: 100% 0;
+  background-position: 0 100%;
 }
 
 .icon--youtube {
   width: 22px ;
   height: 22px ;
-  background-position: 100% 88%;
+  background-position: 31.428571428571427% 100%;
 }
 
 .acf-map {
@@ -1499,8 +1603,11 @@ margin: 20px 0;
   background-color: rgba(255, 255, 255, .96);
   visibility: hidden;
   opacity: 0;
-  transform: scale(1.09);
+  -webkit-transform: scale(1.09);
+          transform: scale(1.09);
+  transition: opacity .3s, visibility .3s, -webkit-transform .3s;
   transition: opacity .3s, transform .3s, visibility .3s;
+  transition: opacity .3s, transform .3s, visibility .3s, -webkit-transform .3s;
   box-sizing: border-box;
 }
 
@@ -1541,7 +1648,8 @@ body.admin-bar .search-overlay {
 .search-overlay--active {
     visibility: visible;
     opacity: 1;
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 
 .search-overlay__section-title {
@@ -1624,12 +1732,25 @@ body.admin-bar .search-overlay {
   overflow: hidden;
 }
 
-@keyframes spin {
+@-webkit-keyframes spin {
   0% {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 
@@ -1642,7 +1763,8 @@ body.admin-bar .search-overlay {
   border: 0.35rem solid rgba(0, 0, 0, 0.2);
 
   border-top-color: black;
-  animation: spin 1s infinite linear;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
 }
 
 /* Block Container */
@@ -1821,7 +1943,8 @@ body.admin-bar .search-overlay {
     }
 
 .loadMoreButton--Container:hover{
-        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
         }
 
 .loadMoreButton--text {
@@ -1836,7 +1959,9 @@ body.admin-bar .search-overlay {
 
 .loadMoreButton .spin {
 
-      animation: spin 3000ms infinite linear;
+      -webkit-animation: spin 3000ms infinite linear;
+
+              animation: spin 3000ms infinite linear;
     }
 
 /* User profile page Navigation */
@@ -1904,10 +2029,67 @@ body.admin-bar .search-overlay {
 
 /* Reporting Section  */
 
-.profile-rep{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
+.reporting-Container .topStat{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        grid-column-gap : 2rem;
+        grid-auto-rows: -webkit-min-content;
+        grid-auto-rows: min-content;
+        grid-row-gap: 2rem;
+        margin: 2rem auto;
+        
+    }
 
+.reporting-Container .topStat .title{
+            color: #fff;
+            background-color: #F08BEC;
+            border : 2px solid #F043E9;
+            border-radius : 20% 20% 0 0;
+            text-align: center;
+            padding : .4rem 0;
+    
+        }
+
+.reporting-Container .topStat .value {
+            color: #a4119f;
+            background-color: #ddd;
+            border : 2px solid #F043E9;
+            border-radius :  0 0 20% 20% ;
+            text-align: center;
+            padding: .5rem 0 ;
+        }
+
+.reporting-Container .middleStat{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-column-gap : 2rem;
+            grid-auto-rows: -webkit-min-content;
+            grid-auto-rows: min-content;
+            justify-items : center;
+            align-items : center;
+            margin-bottom: 2rem ;
+        }
+
+.reporting-Container .middleStat .middleStat-sexe{
+                width : 60%;
+                
+            }
+
+.reporting-Container .middleStat .middleStat-country{
+                width : 60%;
+               
+            }
+
+.reporting-Container .profile-rep{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+
+.reporting-footnote{
+    font-size: .6rem;
+    margin-top: 1rem;
+    background-color: #eee;
+    padding: 1rem  ;
 }
 
 .edit-profile-container {
@@ -1961,6 +2143,44 @@ body.admin-bar .search-overlay {
 .edit-profile-container #front-end-profile .cmb2-wrap .cmb-row textarea:focus, .edit-profile-container #front-end-profile .cmb2-wrap .cmb-row input:focus{
                     border: solid 3px rgba(240,67,233, .8);	
                 }
+
+.UPsectionCont{
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+.UPsectionCont_Title{
+        font-size: 1.5rem;
+        color:#a4119f;
+        margin-bottom: 2rem;
+        margin-left : 2rem;
+    }
+
+/* css for table in mYrecipes subpage */
+
+#Recipes_table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+#Recipes_table td, #Recipes_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+#Recipes_table tr:nth-child(even){background-color: #f2f2f2;}
+
+#Recipes_table tr:hover {background-color: #ddd;}
+
+#Recipes_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #F043E9;
+    color: white;
+  }
 
 .authorMain{
     display : grid;
@@ -2020,36 +2240,53 @@ body.admin-bar .search-overlay {
             padding: 1.5rem 2rem;
         }
 
-#loginOverlay {
-    position: fixed; /* Sit on top of the page content */
-    display: block; /* Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0; 
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(164,17,159,0.3); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer;
-  }
+.loginOverlay{
+    display: none;
+}
 
-/* Add a pointer on hover */
+.loginOverlay--active {
+        position: fixed; /* Sit on top of the page content */
+        display: block; /* Hidden by default */
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%; /* Full height (cover the whole page) */
+        top: 0; 
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(164,17,159,0.3); /* Black background with opacity */
+        z-index: 2;
+      }
 
-#loginOverlay .loginOverlay-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        color: white;
-        transform: translate(-50%,-50%);
-        padding: 4rem 6rem ;
-        background-color: rgba(164,17,159, 0.7);
-        text-align: center;
-    }
+/* Specify a stack order in case you're using a different order for other elements */
 
-#loginOverlay .loginOverlay-content .loginOverlay-title{
-            margin-bottom: 1rem;
+.loginOverlay--active .loginOverlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: white;
+            -webkit-transform: translate(-50%,-50%);
+                    transform: translate(-50%,-50%);
+            padding: 4rem 6rem ;
+            background-color: rgba(164,17,159, 0.7);
+            text-align: center;
         }
+
+.loginOverlay--active .loginOverlay-content .close-loginOverlay{
+                position : absolute;
+                font-size: .7rem;
+                top: 0;
+                right: 0;
+                padding: .2rem .3rem;
+                border: 2px solid #fff;
+                border-radius: 50%;
+                cursor: pointer;
+    
+    
+            }
+
+.loginOverlay--active .loginOverlay-content .loginOverlay-title{
+                margin-bottom: 1rem;
+            }
 
 /* comment List CSS */
 
@@ -2316,6 +2553,27 @@ color: #a4119f;
 
 .border-red {
 border: 3px solid red !important ;
+}
+
+.tooltip {
+   display: none;
+  width: 120px;
+  font-size: .6rem;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin : 0 auto ;
+
+
+  /* Position the tooltip */
+  /* position: absolute;
+  z-index: 1; */
+}
+
+.tpCont:hover .tooltip {
+  display : block;
 }
 
 

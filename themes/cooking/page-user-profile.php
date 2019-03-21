@@ -5,11 +5,12 @@
 
  <nav>
   <ul class="nav nav-tabs" id="userProfile">
-    <li class="active" id="h"> <a href="profile"> My Profile</a></li>
+    <li class="active main" id="h"> <a href="<?php echo site_url('/user-profile/')?>"> My Profile</a></li>
     <li class=""> <a href="recipe"> My Recipes</a></li>
-    <li class=""> <a href="fav"> My Favourites</a></li>
-    <li class=""> <a href="friend"> My Friends</a></li>
     <li class=""> <a href="made"> Made it</a></li>
+    <li class=""> <a href="friend"> Following</a></li>
+    <li class=""> <a href="com"> In Touch</a></li>
+    
   </ul>
 </nav>
 </div>
@@ -17,7 +18,7 @@
 
   <div id="tab-1" class="tab-pane active">
    <?php 
-    $template_file = WP_PLUGIN_DIR.'/Profile-Page/views/mainProfile.php' ;
+    $template_file = WP_PLUGIN_DIR.'/Profile-Page/inc/Views/mainProfile.php' ;
     load_template(  $template_file, $require_once = true );
    ?>
  

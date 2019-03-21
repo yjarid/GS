@@ -6,6 +6,7 @@
 namespace Comment;
 
 use Comment\BaseController;
+use GS\DisplayFunc;
 
 
 class CommentRating extends BaseController
@@ -91,28 +92,89 @@ function comment_rating_display( $comment_text ){
 // add comment rating to POST meta
 
 function comment_rating_save_postMeta($comment_ID, $comment_status) {
+	$date = DisplayFunc::getDate();
+	$monthMetaKey = 'rating_'.$date['M'].'_'.$date['Y'];
+	$yearMetaKey = 'rating_'.$date['Y'];
 
 	$comment = get_comment( $comment_ID ); 
 	$rating = get_comment_meta($comment_ID, 'rating', true);
+	
+
+	// retreive the Post Rating year and month
 	$post_id = $comment->comment_post_ID;
-	$rating_array = get_post_meta($post_id, 'rating', true);
+	$post_rating_year = get_post_meta($post_id, $yearMetaKey, true);
+	$post_rating_month = get_post_meta($post_id, $monthMetaKey, true);
+
+	// retreive the Post Rating year and month
+	$user_id = get_post_field( 'post_author', $post_id );
+	$user_rating_year = get_user_meta($user_id, $yearMetaKey, true);
+	$user_rating_month = get_user_meta($user_id, $monthMetaKey, true);
+
+	$postPeriods = [$monthMetaKey => $post_rating_month , $yearMetaKey => $post_rating_year];
+	$userPeriods = [$monthMetaKey => $user_rating_month , $yearMetaKey => $user_rating_year];
+	 
 
 	if($comment_status == 'approve') {
 
-		//update the post meta with th new rating 
+		//update the post meta with th new rating for Month and Year
+
+		foreach($postPeriods as $key => $period){
+			if(!$period) $period = array(0,0,0);
+			$post_commenters = $period[0] + 1;
+			$post_rating_tot = $period[1] + $rating;
+			$post_rating_avg = round( $post_rating_tot / $post_commenters, 1 );	
+			$period = [intval($post_commenters) , intval($post_rating_tot), floatval($post_rating_avg)  ];
+			update_post_meta( $post_id, $key, $period );
+		}
 		
-		if(!$rating_array) $rating_array = array(0,0,0);
+			//update user meta with th new rating for Month and Year
 
-		$commenters = $rating_array[0] + 1;
-		$rating_tot = $rating_array[1] + $rating;
-		$rating_avg = round( $rating_tot / $commenters, 1 );
+		foreach($userPeriods as $key => $period){
+			if(!$period) $period = array(0,0,0);
+			$user_commenters = $period[0] + 1;
+			$user_rating_tot = $period[1] + $rating;
+			$user_rating_avg = round( $user_rating_tot / $user_commenters, 1 );	
+			$period = [intval($user_commenters) , intval($user_rating_tot), floatval($user_rating_avg)  ];
+			update_user_meta( $user_id, $key, $period );
+		}
 
-		$rating_array = [intval($commenters) , intval($rating_tot), floatval($rating_avg)  ];
 
-		update_post_meta( $post_id, 'rating', $rating_array );
 
 	} else {
-		if($rating_array) delete_post_meta( $post_id, 'rating');
+		
+		// remove the comment data from the post array 
+		foreach($postPeriods as $key => $period){
+			if($period) {
+				$post_commenters = $period[0] - 1;
+				$post_rating_tot = $period[1] - $rating;
+
+				// to avoid dividing  by 0 
+				if($post_commenters > 0) {
+					$post_rating_avg = round( $post_rating_tot / $post_commenters, 1 );
+				} else {
+					$post_rating_avg = 0;
+				}
+				
+				$period = [intval($post_commenters) , intval($post_rating_tot), floatval($post_rating_avg)  ];
+				update_post_meta( $post_id, $key, $period );
+			}
+		}
+
+		// remove the comment data from the user array 
+		foreach($userPeriods as $key => $period){
+			if($period){
+				$user_commenters = $period[0] - 1;
+				$user_rating_tot = $period[1] - $rating;
+					// to avoid dividing by 0 
+					if($user_commenters > 0) {
+						$user_rating_avg = round( $user_rating_tot / $user_commenters, 1 );
+					} else {
+						$user_rating_avg = 0;
+					}	
+				$period = [intval($user_commenters) , intval($user_rating_tot), floatval($user_rating_avg)  ];
+				update_user_meta( $user_id, $key, $period );
+			}		
+		}	
 	}
 }
 

@@ -1,4 +1,6 @@
 <?php
+use GS\Comment;
+use GS\DisplayFunc;
  if( post_password_required()) return;
 ?>
 
@@ -21,7 +23,7 @@
             'walker'    => null,
             'max_depth' => 1,
             'style'     => 'ol',
-            'callback'  => 'format_comment',
+            'callback'  => array('GS\Comment', 'formatComment'),
             'end-callback' => null,
             'type'      => 'all',
             'reply_text' => 'reply Hna',

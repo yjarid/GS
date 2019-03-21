@@ -1,3 +1,13 @@
+
+    <div class = "loginOverlay" id="checkLoginOverlay">
+     <div class="loginOverlay-content">
+    
+      <span class="close-loginOverlay" > X </span>
+      <h4 class="loginOverlay-title">This Action is for Member Only ! </h4>
+      <a href="${jsData.root_url }/login "> <p class="btn btn--author">Please Login </p></a>
+    
+     </div>
+    </div>
 <footer>
 </footer>
 

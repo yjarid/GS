@@ -1,0 +1,26 @@
+{
+    "name": "GoldenSpoon theme",
+    "description": "the theme file ",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Youssef",
+            "email": "proudmoroccan@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "GS\\": "./config/"
+
+           
+
+        },
+        "classmap": [
+            "./config/"
+
+          ]
+    }
+}
