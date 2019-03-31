@@ -449,7 +449,7 @@ section {
 
 .searchSignUp {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   background-color: #a4119f;
   border-radius: 1rem;
   margin-top: -1rem;
@@ -582,44 +582,65 @@ justify-self: center;
   }
    }
 
-.login{
-
+.login__btn{
+  
   display: block;
   font-size: .75rem;
   text-align: center;
   padding: .3rem .8rem;
   border-radius: .5rem;
   background-color: #F043E9;
+  margin: 10px 0;S
   margin: 10px 0;
+
 }
 
 @media (min-width: 900px) {
 
-.login{
-  display: block;
+.login__btn{
+  display: inline-block;
   margin-top: .8rem;
-  padding: .5rem .7rem;
-  width: 100%;
+  padding: .3rem .3rem;
   font-size: .9rem;
-    margin-left: 0rem
+  margin-left: 0rem;
+  position: relative
+
 }
+
+  .login__btn_extraPadding{
+    padding: .4rem .6rem;
+  }
    }
 
-.login a {
+.login__btn .login__text{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.login__btn a {
     color: #fff;
   }
 
 .login__avatar {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    border-radius: 40%;
+    overflow: hidden;
+    
+
 }
 
-.login__avatar img {
-    display: block;
-    width: 30px;
-    height: 30px;
-  }
+.logout__text a {
+  color: #FFF;
+  background-color: blue;
+  padding: .2rem .2rem;
+  display: inline;
+  font-size: .7rem;
+  margin-left: .4rem;
+  border-radius: 20%;
+}
 
 /* Menu Principal */
 
@@ -702,7 +723,6 @@ justify-self: center;
 
 .headerNav {
   position: relative;
-  z-index: 2;
 }
 
 .headerNav-background {
@@ -754,7 +774,7 @@ justify-self: center;
    }
 
 .main-navigation li {
-    margin: 4px 0px;
+    margin: 0;
     list-style: none;
     padding: 3px 0px;
     text-align: center;
@@ -809,8 +829,7 @@ ul.parent  {
 @media (min-width: 900px) {
 
 ul.parent  {
-    grid-template-columns: repeat(7,1fr);
-    position: relative
+    grid-template-columns: repeat(7,1fr)
 
 }
    }
@@ -818,7 +837,7 @@ ul.parent  {
 ul.child {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    position: relative;
+    /* position: relative; */
 
   }
 
@@ -828,32 +847,18 @@ ul.child {
   display : none;
 }
 
-@media (min-width: 900px) {
-
-.subMenu {
-    display: inline-block;
-    position: absolute;
-    top: 100%;
-    width: 98%;
-    overflow: auto;
-    opacity: 0;
-    border: 3px solid #ddd;
-    padding: 2px 2px;
-    font-size: 80%;
-    font-weight: 400;
-    visibility: hidden;
-    background-color: rgba(255,255,255, .9);
-    border-radius: 4rem;
-    transition: all .5s ease-out
-}
+@media (min-width: 900px) {  
+    .subMenu--active {
+      display:block;
+      border: 3px solid #ddd;
+      padding: 2px 2px;
+      font-size: 80%;
+      font-weight: 400;
+      background-color: rgba(255,255,255, .9);
+      border-radius: 4rem;
+      width: 98%;
+    }
    }
-
-.subMenu--active {
-  top: 30px;
-  visibility: visible;
-  opacity: 1;
-
-  }
 
 .subMenu li {
     border: none;
@@ -1245,13 +1250,18 @@ font-weight: bold;
 }
    }
 
-.cardViews {
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #B19324;
-  display: block;
+.cardStat{
   text-align: center;
 }
+
+.cardStat .cardViews {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #B19324;
+    display: inline-block;
+    margin-left: .3rem;
+    
+  }
 
 /* Category page Cards */
 
@@ -2430,29 +2440,27 @@ color: #a4119f;
     }
 
 .postNewRecipeTop{
-    margin: 1rem auto ;
-    background-color: rgba(212,175,55, 0.3);
-    padding: 1rem 0 1.4rem 0;
+    margin: 1rem auto 0 auto ;
+    background-color: rgba(253,235,186, 0.7);;
+    padding: 1rem 0 0 0;
     
 
 }
 
 .postNewRecipeTop .postNewRecipeTitle{
         font-size: 1.8rem;
-        color: #8D164F;  
+        color: #B19324;  
         text-align: center;  
         margin-bottom: .6rem; 
     }
 
 .postNewRecipeTop .postNewRecipeDescription{
-        font-size: .8rem;
-        color: #fff;  
-        width: 80%;
+        font-size: 1rem;
+        color: #a4119f;  
+        background-color: #FDEBBA;
         margin: 0 auto;
         font-style: italic;
-        background-color: rgba(212,175,55, 0.8);
         padding: 1rem 3rem;
-        border-radius: 25%;
         font-weight: 300;
     }
 

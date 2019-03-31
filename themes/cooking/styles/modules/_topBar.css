@@ -52,7 +52,7 @@
 
 .searchSignUp {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   background-color: $mainPurple;
   border-radius: 1rem;
   margin-top: -1rem;
@@ -153,40 +153,59 @@ justify-self: center;
 
   }
 
-.login{
-
+.login__btn{
+  
   display: block;
   font-size: .75rem;
   text-align: center;
   padding: .3rem .8rem;
   border-radius: .5rem;
   background-color: $lightPurple;
+  margin: 10px 0;S
   margin: 10px 0;
 
 @mixin large {
-  display: block;
+  display: inline-block;
   margin-top: .8rem;
-  padding: .5rem .7rem;
-  width: 100%;
+  padding: .3rem .3rem;
   font-size: .9rem;
-    margin-left: 0rem;
+  margin-left: 0rem;
+  position: relative;
+
+  &_extraPadding{
+    padding: .4rem .6rem;
+  }
 
 }
+
+.login__text{
+  display: inline-block;
+  vertical-align: middle;
 }
 
-  .login a {
+}
+
+  .login__btn a {
     color: #fff;
   }
 
   .login__avatar {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    border-radius: 40%;
+    overflow: hidden;
+    
 
-
-    & img {
-    display: block;
-    width: 30px;
-    height: 30px;
-  }
 }
+.logout__text a {
+  color: #FFF;
+  background-color: blue;
+  padding: .2rem .2rem;
+  display: inline;
+  font-size: .7rem;
+  margin-left: .4rem;
+  border-radius: 20%;
+}
+

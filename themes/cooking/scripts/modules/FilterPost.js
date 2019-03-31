@@ -51,6 +51,7 @@ submitForm() {
 
           var maxPage = data.max;
           that.loadMoreFilter.data('max', maxPage);
+          that.loadMoreFilter.data('page', 1);
           
 
           if(that.loadMoreFilter.data('max') == 1) {

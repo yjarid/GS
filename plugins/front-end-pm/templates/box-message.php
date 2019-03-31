@@ -13,26 +13,14 @@ do_action( 'fep_display_before_messagebox', $action ); ?>
 <div class="fep-messagebox-search-form-div">
 	<form id="fep-messagebox-search-form" action="">
 		<input type="hidden" name="fepaction" value="messagebox" />
-		<input type="search" name="fep-search" class="fep-messagebox-search-form-field" value="<?php echo isset( $_GET['fep-search'] ) ? esc_attr( $_GET['fep-search'] ): ""; ?>" placeholder="<?php _e( 'Search Messages', 'front-end-pm'); ?>" />
+		<input type="search" name="fep-search" class="fep-messagebox-search-form-field GS-search" value="<?php echo isset( $_GET['fep-search'] ) ? esc_attr( $_GET['fep-search'] ): ""; ?>" placeholder="Search Messages" />
 		<input type="hidden" name="feppage" value="1" />
 	</form>
 </div>
 <form class="fep-message-table form" method="post" action="">
 	<div class="fep-table fep-action-table">
 		<div>
-			<div class="fep-bulk-action">
-				<select name="fep-bulk-action">
-					<option value=""><?php esc_html_e( 'Bulk action', 'front-end-pm' ); ?></option>
-					<?php foreach ( Fep_Messages::init()->get_table_bulk_actions() as $bulk_action => $bulk_action_display ) : ?>
-						<option value="<?php echo esc_attr( $bulk_action ); ?>"><?php echo esc_html( $bulk_action_display ); ?></option>
-					<?php endforeach; ?>
-				</select>
-			</div>
-			<div>
-				<input type="hidden" name="token"  value="<?php echo fep_create_nonce( 'bulk_action' ); ?>"/>
-				<button type="submit" class="fep-button" name="fep_action" value="bulk_action"><?php esc_html_e( 'Apply', 'front-end-pm' ); ?></button>
-			</div>
-			<div class="fep-loading-gif-div"></div>
+		<!-- Filter the Message to show -->
 			<div class="fep-filter">
 				<select onchange="if (this.value) window.location.href=this.value">
 					<?php foreach ( Fep_Messages::init()->get_table_filters() as $filter => $filter_display ) : ?>
@@ -40,28 +28,66 @@ do_action( 'fep_display_before_messagebox', $action ); ?>
 					<?php endforeach; ?>
 				</select>
 			</div>
+		<!-- Bulk Action drop down  -->
+			<div>
+
+			</div>
+			<div class="GS-bulk-action-grid">
+
+				<!-- bulk action drp down list -->
+				<div class="fep-bulk-action">
+					<select name="fep-bulk-action">
+						<option value=""><?php esc_html_e( 'Bulk action', 'front-end-pm' ); ?></option>
+						<?php foreach ( Fep_Messages::init()->get_table_bulk_actions() as $bulk_action => $bulk_action_display ) : ?>
+							<option value="<?php echo esc_attr( $bulk_action ); ?>"><?php echo esc_html( $bulk_action_display ); ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+
+				<!-- Submit Button  -->
+				<div>
+					<input type="hidden" name="token"  value="<?php echo fep_create_nonce( 'bulk_action' ); ?>"/>
+					<button type="submit" class="fep-button GS-messageBox-submit" name="fep_action" value="bulk_action">Apply</button>
+				</div>
+			</div>
+			
+
+			<div class="fep-loading-gif-div"></div>
+
+
 		</div>
 	</div>
+
+	<!-- List of Messages -->
 	<?php if ( $messages->have_messages() ) {
 		wp_enqueue_script( 'fep-cb-check-uncheck-all' ); ?>
-		<div class="fep-cb-check-uncheck-all-div"><label><input type="checkbox" class="fep-cb-check-uncheck-all" /><?php esc_html_e( 'Check/Uncheck all', 'front-end-pm' ); ?></label></div>
+		<div class="fep-cb-check-uncheck-all-div">
+			<label>
+				<input type="checkbox" class="fep-cb-check-uncheck-all" /><?php esc_html_e( 'Check/Uncheck all', 'front-end-pm' ); ?>
+		</label>
+		</div>
 		<div id="fep-table" class="fep-table fep-odd-even">
 			<?php
 			while( $messages->have_messages() ) {
 				$messages->the_message(); ?>
 				<div id="fep-message-<?php echo fep_get_the_id(); ?>" class="fep-table-row">
-					<?php foreach ( Fep_Messages::init()->get_table_columns() as $column => $display ) : ?>
+					<?php foreach ( Fep_Messages::init()->get_table_columns() as $column => $display ) : 
+						if($column == 'author') echo '<div class="GS-message-detail">' ?>
 						<div class="fep-column fep-column-<?php echo esc_attr( $column ); ?>"><?php Fep_Messages::init()->get_column_content( $column ); ?></div>
 					<?php endforeach; ?>
+					</div>
 				</div>
-				<?php
-			} //endwhile
-			?>
+		<?php } //endwhile ?>
 		</div>
+
 		<?php
 		echo fep_pagination( $total_message );
 	} else {
-		?><div class="fep-error"><?php esc_html_e( 'No messages found. Try different filter.', 'front-end-pm' ); ?></div><?php 
+		?>
+		<div class="fep-error">
+			<?php esc_html_e( 'No messages found. Try different filter.', 'front-end-pm' ); ?>
+		</div>
+		<?php 
 	}
 ?></form><?php
 

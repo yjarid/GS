@@ -44,6 +44,7 @@ else
 
     $data['login'] = 'true';
     $data['html'] = 'Login successful, redirecting...';
+    $data['redirect'] = $_POST['redirect'];
   }
 
 

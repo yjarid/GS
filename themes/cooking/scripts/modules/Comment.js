@@ -8,7 +8,6 @@ class Comment {
         this.submitBtn = this.form.find("#submit");
         this.commentRatingContainer = this.form.find("#comments-rating-container");
         this.events();
-        console.log('helooooppp');
 
     }
 

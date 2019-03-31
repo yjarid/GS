@@ -38,10 +38,6 @@ function userProfileSubPage(){
         require_once( "$this->plugin_path/inc/Views/myRecipes.php" );
         break;
 
-        case 'com':
-        require_once( "$this->plugin_path/inc/views/inTouch.php" );
-        break;
-
         case 'friend':
         require_once( "$this->plugin_path/inc/views/myFriends.php" );
         break;

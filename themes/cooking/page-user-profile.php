@@ -9,7 +9,7 @@
     <li class=""> <a href="recipe"> My Recipes</a></li>
     <li class=""> <a href="made"> Made it</a></li>
     <li class=""> <a href="friend"> Following</a></li>
-    <li class=""> <a href="com"> In Touch</a></li>
+    <li class="main"> <a href="<?php echo site_url('/user-profile/message')?>"> Messages</a></li>
     
   </ul>
 </nav>

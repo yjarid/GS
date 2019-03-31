@@ -356,9 +356,9 @@ class Fep_Messages {
 				break;
 			case 'author':
 				if( 'threaded' === fep_get_message_view() ){
-					?><span class="fep-message-author"><?php echo fep_user_name( fep_get_message_field( 'mgs_last_reply_by' ) ); ?></span><span class="fep-message-date"><?php echo fep_get_the_date( 'mgs_last_reply_time' ); ?></span><?php
+					?><span class="fep-message-author"><?php echo fep_user_name( fep_get_message_field( 'mgs_last_reply_by' ) ); ?></span><span class="fep-message-date"><?php echo ' on '.fep_get_the_date( 'mgs_last_reply_time' ); ?></span><?php
 				} else {
-					?><span class="fep-message-author"><?php echo fep_user_name( fep_get_message_field( 'mgs_author' ) ); ?></span><span class="fep-message-date"><?php echo fep_get_the_date( 'created' ); ?></span><?php
+					?><span class="fep-message-author"><?php echo fep_user_name( fep_get_message_field( 'mgs_author' ) ); ?></span><span class="fep-message-date"><?php echo ' on '.fep_get_the_date( 'created' ); ?></span><?php
 				}
 				break;
 			case 'title':

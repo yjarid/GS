@@ -21,7 +21,10 @@ class LoadMore {
       if(!this.loading) {
         var page =  button.data.clickedButton.data('page') ;
         var max_pages = button.data.clickedButton.data('max');
-        if(max_pages === 1){
+        var newpage = page + 1;
+        console.log(newpage);
+        console.log(max_pages);
+        if(max_pages === 1 && newpage  == max_pages){
           button.data.clickedButton.hide();
           return false;
         }
@@ -29,7 +32,7 @@ class LoadMore {
         button.data.clickedButton.find(".icon").addClass("spin");
      
         this.loading = true;
-        var newpage = page +1;
+        
 
         if(button.data.clickedButton == this.loadMore) {
           var metaKey = this.loadMore.data('key');
@@ -68,7 +71,6 @@ class LoadMore {
 
             success : ( data )=> {
               if( data ) {
-                console.log(data);
 
                 button.data.clickedButton.data('page', newpage ) ;
 
@@ -81,7 +83,7 @@ class LoadMore {
 
 
                 if (  newpage == 4 || newpage == max_pages  ) {
-                    button.data.clickedButton.hide(); // if last page, HIDE the button
+                    button.data.clickedButton.hide().find(".icon").removeClass("spin"); // if last page, HIDE the button
 
                     }
 

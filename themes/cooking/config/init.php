@@ -23,7 +23,8 @@ final class Init
 			Ajax\LoadMore::class,
 			Data\UserData::class,
 			Data\PostData::class,
-			GSRating::class
+			GSRating::class,
+			DisplayFunc::class,
 		
 		];
 	}

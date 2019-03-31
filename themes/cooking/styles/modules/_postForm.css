@@ -1,26 +1,24 @@
 .postNewRecipeTop{
-    margin: 1rem auto ;
-    background-color: rgba(#D4AF37, 0.3) ;
-    padding: 1rem 0 1.4rem 0;
+    margin: 1rem auto 0 auto ;
+    background-color:  rgba(#FDEBBA, 0.7);;
+    padding: 1rem 0 0 0;
 
 
 
     .postNewRecipeTitle{
         font-size: 1.8rem;
-        color: #8D164F;  
+        color: $mainGold;  
         text-align: center;  
         margin-bottom: .6rem; 
     }
 
     .postNewRecipeDescription{
-        font-size: .8rem;
-        color: #fff;  
-        width: 80%;
+        font-size: 1rem;
+        color: $mainPurple;  
+        background-color: #FDEBBA;
         margin: 0 auto;
         font-style: italic;
-        background-color: rgba(#D4AF37, 0.8) ;
         padding: 1rem 3rem;
-        border-radius: 25%;
         font-weight: 300;
     }
     

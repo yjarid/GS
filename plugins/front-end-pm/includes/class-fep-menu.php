@@ -27,13 +27,13 @@ class Fep_Menu {
 				$class = $menu_array['active-class'];
 			}
 
-			$menu .= sprintf(
+			$menu .='<div>'. sprintf(
 				'<a id="%1$s" class="%2$s" href="%3$s">%4$s</a>',
 				$menu_array['id'],
 				fep_sanitize_html_class( $class ),
 				$menu_array['url'] ? esc_url( $menu_array['url'] ) : fep_query_url( $menu_array['action'] ),
 				strip_tags( $menu_array['title'], '<span>' )
-			);
+			) . '</div>';
 		}
 		echo $menu;
 	}

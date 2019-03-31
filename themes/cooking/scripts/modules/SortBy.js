@@ -56,6 +56,7 @@ class SortBy {
               }, 1000);
               var maxPage = data.max;
               that.loadMoreSort.data('max', maxPage);
+              that.loadMoreSort.data('page', 1);
 
               if(that.loadMoreSort.data('max') == 1) {
                 that.loadMoreSort.hide();

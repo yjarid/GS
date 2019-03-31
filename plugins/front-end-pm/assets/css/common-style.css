@@ -1,43 +1,51 @@
 /* Menu Styling */
+/* the inline style or original style came from function.php  */
+
 #fep-menu {
 	/* color: #333; */
-	font-size: 14px;
-	font-weight: bold;
 	width: 100%;
+	display: grid;
+ 	grid-template-columns: repeat(6, 1fr);
+  	grid-gap: 1rem;
+  	align-content : center;
+	  justify-content: center; 
+	  margin-bottom: 2rem;
+	  
 }
 
-#fep-menu .fep-button,
 .fep-button,
 .fep-button-active {
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	/* background: #f0fcff; */
+	display : block;
+	text-align: center;
 	border-radius: 5px;
-	border: 1px solid #8FBFC9;
-	/* color: #000000 !important; */
 	cursor: pointer;
-	display: inline-block;
 	font-size: 13px;
 	font-weight: bold;
-	margin-right: 10px;
 	margin-top: 10px;
 	padding: 10px 20px;
 	text-decoration: none !important;
+	color: #000;
+}
+
+.fep-button{
+	background-color: rgba(240,67,233, .1) ; 
+	border: 1px solid rgba(177,147,36, .3);
+}
+
+.fep-button-active {
+	background-color: rgba(240,67,233, .3) ; 
+	color: #B19324 !important;
+	border: 1px solid rgba(177,147,36, .7);
 }
 
 #fep-menu .fep-button:hover,
 .fep-button-active {
-	/* background: #d3eef5; */
-	/* color: #333; */
 	font-size: 14px;
+	background-color: rgba(240,67,233, .2); 
+	border: 1px solid rgba(177,147,36, .7);
 }
 
 #fep-notification-bar {
-	-khtml-border-radius: 3px;
-	-moz-border-radius: 3px;
-	-moz-box-sizing: border-box;
-	-webkit-border-radius: 3px;
-	-webkit-box-sizing: border-box;
 	background-color: #ffebe8;
 	border-color: #c00;
 	border-radius: 3px;
@@ -77,11 +85,6 @@
 .fep-error,
 .fep-success,
 .fep-wp-error {
-	-khtml-border-radius: 3px;
-	-moz-border-radius: 3px;
-	-moz-box-sizing: border-box;
-	-webkit-border-radius: 3px;
-	-webkit-box-sizing: border-box;
 	background-color: #ffebe8;
 	border-color: #c00;
 	border-radius: 3px;
@@ -123,4 +126,17 @@
 	font-size: 90%;
 	font-style: italic;
 	font-weight: normal;
+}
+
+/* ***************
+code added by youssef
+******************** */
+
+/* Message box */
+
+.GS-messageBox-submit{ 
+	background-color: #23527c;
+	color: #fff;
+	align-self: center;
+	margin: 0;
 }

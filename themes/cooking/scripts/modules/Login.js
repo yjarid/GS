@@ -11,6 +11,7 @@ class Login {
    this.errorPassword = this.form.find("#error-password");
    this.loginErrMessage = this.form.find(".message-err");
    this.loginRedMessage = this.form.find(".message-red");
+   this.redirect = this.form.find("#redirect_to");
    this.events();
   }
 
@@ -46,6 +47,9 @@ class Login {
       this.errorPassword.hide();
       var email = this.userEmail.val();
       var password = this.userPass.val();
+      var redirect = this.redirect.val();
+
+      console.log(redirect);
 
 
       if(!email) {
@@ -75,7 +79,8 @@ class Login {
           'action': 'login', //
           'nonceLogin' : jsData.login_nonce, // nonce
           'email' : email,
-          'password' :password
+          'password' :password,
+          'redirect' : redirect
         },
         type: 'POST', // POST
 
@@ -91,13 +96,14 @@ class Login {
               case 'incorrect_password' : err_msg = 'The password you entered wasn\'t quite right.'; break;
               case 'activation_failed' : err_msg = 'Please Activate your Account'; break;
             }
-            console.log('hell');
+            
             that.form.prepend(`<div class="message-err">${err_msg} </div>`);
           }
 
             if(data.login == 'true') {
               that.form.prepend(`<div class="message-red">${data.html} </div>`);
-              var url = jsData.root_url +'/user-profile';
+              var url = data.redirect;
+              console.log(url);
               $(location).attr('href',url);
             }
           }

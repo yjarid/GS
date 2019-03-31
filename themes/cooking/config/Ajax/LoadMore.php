@@ -3,6 +3,7 @@
  * this is for enqueuing Style and script and adding Theme support 
  */
 namespace GS\Ajax;
+use GS\Data\PostData;
 
  
 
@@ -23,96 +24,54 @@ if( defined( 'DOING_AJAX' ) && DOING_AJAX) {
     $paged = $_POST['page'];
 
 if ($_POST['metaKey']) {
-  $args = array(
-            'post_status' => 'publish',
-            'post_type' => 'recipe',
-            'posts_per_page' => 5,
-            'paged' =>$paged,
-            'meta_key' => $_POST['metaKey'],
-            'orderby' => 'meta_value_num',
-            'order' => 'DESC'
-  );
+
+  $load = PostData::getPost(1, $_POST['metaKey'], [], $paged ) ;
+ 
 }
 
 else if(isset($_POST['meal']) || isset($_POST['ingredient']))  {
-  $args = array('post_status' => 'publish',
-               'post_type' => 'recipe',
-               'posts_per_page' => 5,
-               'paged' =>$paged
+  
+      $tax = array('relation' => 'AND');
 
-      );
-
-      $args['tax_query'] = array('relation' => 'AND');
-
-      if( $_POST['meal']) {
-        $args['tax_query'][] =
-          array(
-            'taxonomy' => 'meal',
-            'field' => 'id',
-            'terms' => $_POST['meal'] ?: ''
-          );
+      if( $_POST['meal']) { 
+        $tax[] =   array('taxonomy' => 'meal',   'field' => 'id',   'terms' => $_POST['meal'] ?: '' );
       }
 
       if( $_POST['ingredient']) {
-        $args['tax_query'][] =
-          array(
-            'taxonomy' => 'ingredient',
-            'field' => 'id',
-            'terms' => $_POST['ingredient']
-          );
+        $tax[] = array('taxonomy' => 'ingredient', 'field' => 'id',     'terms' => $_POST['ingredient'] );
       }
+
+      $load = PostData::getPost(1, '', [], $paged, $tax ) ;
 
   }
 
   else if(isset($_POST['sortBy']) && $_POST['sortBy']) {
-    $args = array();
+    $tax[] = array(
+      array(
+      'taxonomy' => $_POST['tax'],
+      'field'    => 'name',
+      'terms'    => $_POST['term'],
+      )
+    );
 
     if($_POST['sortBy'] == 'date' ) {
-      $args = array('post_status' => 'publish',
-                   'post_type' => 'recipe',
-                   'posts_per_page' => 5,
-                   'paged' =>$paged,
-                   'tax_query' => array(
-                        array(
-                        'taxonomy' => $_POST['tax'],
-                        'field'    => 'name',
-                        'terms'    => $_POST['term'],
-                        )
-                      )
-                    );
+
+      $load = PostData::getPost(1, '', [], $paged, $tax ) ;
+      
     }
     else if ( $_POST['sortBy'] != 'date') {
-      $args = array('post_status' => 'publish',
-                   'post_type' => 'recipe',
-                   'posts_per_page' => 5,
-                   'paged' =>$paged,
-                   'meta_key' => $_POST['sortBy'],
-                   'orderby' => 'meta_value_num',
-                   'order' => 'DESC',
-                   'tax_query' => array(
-                        array(
-                          'taxonomy' => $_POST['tax'],
-                          'field'    => 'name',
-                          'terms'    => $_POST['term'],
-                        )
-                      )
-                    );
+      $load = PostData::getPost(1, $_POST['sortBy'], [], $paged, $tax ) ;
+
     }
 
   }
 
   else {
-    $args = array('post_status' => 'publish',
-                 'post_type' => 'recipe',
-                 'posts_per_page' => 5,
-                 'paged' =>$paged,
 
-        );
+    $load = PostData::getPost(1, '', [], $paged );
   }
 
 
-
-  $load = new \WP_Query( $args );
 
 
  if( $load->have_posts() ) {

@@ -36,7 +36,7 @@ class UploadProfilePic {
        console.log(this.attachement.sizes.thumbnail);
 
        $('#user_picture').val(this.attachement.sizes.thumbnail.url);
-       $('#avatar-image-container').find('img').attr('src', $('#user_picture').val() );
+       $('#cuisine-image-container').find('img').attr('src', $('#user_picture').val() );
 
      });
      this.mediaUploader.open();

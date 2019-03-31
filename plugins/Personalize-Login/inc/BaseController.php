@@ -18,6 +18,15 @@ class BaseController
 		$this->plugin = plugin_basename( dirname( __FILE__, 2 ) ) . '/personalize-login.php';
 	}
 
+	/**
+* Renders the contents of the given template to a string and returns it.
+*
+* @param string $template_name The name of the template to render (without .php)
+* @param array  $attributes    The PHP variables for the template
+*
+* @return string               The contents of the template.
+*/
+
   protected function get_template_html( $template_name, $attributes = null ) {
    if ( ! $attributes ) {
        $attributes = array();

@@ -103,4 +103,27 @@ class PostData
         return $GSRating ;
      }
 
+     static function getPost($numb , $metaKey,  $include =[], $paged =null, $tax=[] ){
+        $args = array(
+          'post_status' => 'publish',
+          'post_type' => 'recipe',
+          'posts_per_page' => $numb,
+          'tax_query'=>$tax,
+          'paged'=>$paged
+        );
+
+        if ($metaKey) {
+            $args['meta_key'] = $metaKey;
+            $args['orderby'] = 'meta_value_num';
+            $args['order'] = 'DESC';
+
+        }
+
+        $posts= new \wp_Query($args);
+
+        return $posts; 
+        
+      }
+
+
 }

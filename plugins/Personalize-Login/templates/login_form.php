@@ -41,6 +41,7 @@
           <input id="password" name="pwd" type="password" name="password">
           <div class="error" id="error-password">your password must be atleast 6 characters</div>
         </div>
+        <input type="hidden" id="redirect_to" name="redirect_to" value="<?php echo esc_url($attributes['redirect'])?>">
       <input class="btn btn--register" id="loginbutton" type="submit" value="Login" name="submit">
       <p class="actions">
         <a href="<?php echo site_url('password-lost'); ?>">Forgot your Password ?</a>

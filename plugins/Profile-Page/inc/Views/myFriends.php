@@ -34,7 +34,7 @@ if($followedChefs){
          ?>
 </div>
 
-<h3>Top Followed chef </h3>
+<h3>Top Followed chef Recipes </h3>
 <div class="cardsContainer">
         <?php
 
@@ -42,7 +42,8 @@ if($followedChefs){
                   'post_status' => 'publish',
                   'post_type' => 'recipe',
                   'posts_per_page' => 10,
-                  'author__in' => $followedChefs
+                  'author__in' => $followedChefs,
+                  'no_found_rows'=>true
                   
               );
 

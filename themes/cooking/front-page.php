@@ -3,6 +3,7 @@
 get_header();
 
 use GS\Data\ViewsData;
+use GS\Data\PostData;
 use GS\DisplayFunc;
 
 ?>
@@ -124,16 +125,8 @@ use GS\DisplayFunc;
         <div class="cardsContainer">
         <?php
 
-          $args = array(
-                  'post_status' => 'publish',
-                  'post_type' => 'recipe',
-                  'posts_per_page' => 5,
-                  'meta_key' => 'post_views_'.$date['M'].'_'.$date['Y'],
-                  'orderby' => 'meta_value_num',
-                  'order' => 'DESC'
-              );
 
-            $mostViewed = new wp_Query($args);
+            $mostViewed = PostData::getPost(1, 'post_views_'.$date['M'].'_'.$date['Y'] ) ;
 
 
             while($mostViewed->have_posts()) {

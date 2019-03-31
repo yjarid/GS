@@ -1,5 +1,7 @@
 <?php
 use \GS\Data\ViewsData;
+use \GS\Data\PostData;
+$id = get_the_id();
 ?>
 
  <div class="contentCardContainer">
@@ -10,11 +12,19 @@ use \GS\Data\ViewsData;
     </div>
     <div class="">
       <span class="cardTitle"><?php the_title( ) ; ?> </span>
-      <span class="cardViews">
-        <?php
-        echo ViewsData::getPostViews(get_the_id(), 'Year') . ' Views' ;
-        ?>
-      </span>
+      <div class="cardStat">
+        <span class="cardViews">
+          <?php
+          echo 'Views: ' .ViewsData::getPostViews($id, 'Year') ;
+          ?>
+        </span>
+        <span class="cardViews">
+          <?php
+          echo 'Score: ' . PostData::getGSRating($id) ;
+          ?>
+        </span>
+      </div>
+      
       <div class="cardDescription">
         <?php
           if(has_excerpt( get_the_id() )) {

@@ -9,6 +9,13 @@ namespace GS;
 
 class DisplayFunc 
 {
+
+  public function register() {
+
+    // Remove p tags from tax description get_the_archive_description()
+    remove_filter('term_description','wpautop'); 
+  
+  }
     
     // to change the format of the date the comment is posted exp: posted 2 days ago
     
@@ -108,7 +115,7 @@ class DisplayFunc
 
          // to display user by GS rating or any other meta key used in the front page and user profile
 
-      static function displayUser($numb , $metaKey, $content, $include, $paged ){
+      static function displayUser($numb , $metaKey, $content, $include =[], $paged =null ){
         $user_args = array(
           'include' => $include,
           'number' => $numb,
@@ -140,4 +147,8 @@ class DisplayFunc
 
          echo $html;
         }
+
+
+        
+        
 }

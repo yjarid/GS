@@ -68,7 +68,6 @@
 
 .headerNav {
   position: relative;
-  z-index: 2;
   &-background {
     background-color: rgba($mainPurple, .6);
   }
@@ -106,7 +105,7 @@
 
 
   li {
-    margin: 4px 0px;
+    margin: 0;
     list-style: none;
     padding: 3px 0px;
     text-align: center;
@@ -157,7 +156,7 @@ ul.parent  {
 
   @mixin large {
     grid-template-columns: repeat(7,1fr);
-    position: relative;
+    
   }
 
 }
@@ -165,7 +164,7 @@ ul.parent  {
 ul.child {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    position: relative;
+    /* position: relative; */
 
   }
 
@@ -176,27 +175,17 @@ ul.child {
 
 
 
-  @mixin large {
-    display: inline-block;
-    position: absolute;
-    top: 100%;
-    width: 98%;
-    overflow: auto;
-    opacity: 0;
-    border: 3px solid #ddd;
-    padding: 2px 2px;
-    font-size: 80%;
-    font-weight: 400;
-    visibility: hidden;
-    background-color: rgba(255,255,255, .9);
-    border-radius: 4rem;
-    transition: all .5s ease-out;
-  }
-  &--active {
-  top: 30px;
-  visibility: visible;
-  opacity: 1;
-
+  @mixin large {  
+    &--active {
+      display:block;
+      border: 3px solid #ddd;
+      padding: 2px 2px;
+      font-size: 80%;
+      font-weight: 400;
+      background-color: rgba(255,255,255, .9);
+      border-radius: 4rem;
+      width: 98%;
+    }
   }
 
   li {

@@ -62,18 +62,12 @@ class Login extends BaseController
  return $this->get_template_html( 'login_form', $attributes );
 }
 
-/**
-* Renders the contents of the given template to a string and returns it.
-*
-* @param string $template_name The name of the template to render (without .php)
-* @param array  $attributes    The PHP variables for the template
-*
-* @return string               The contents of the template.
-*/
 
 
 /**
+ * the action is fired right before the login functionality 
 * Redirect the user to the custom login page instead of wp-login.php.
+*this is only in case of the GET request exp clicking a link or trying to access the admin dashboard(not submitting a the form which is a post request)
 */
 function redirect_to_custom_login() {
  if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
@@ -163,8 +157,13 @@ public function redirect_after_login( $redirect_to, $requested_redirect_to, $use
          $redirect_url = $requested_redirect_to;
      }
  } else {
-     // Non-admin users always go to their account page after login
-     $redirect_url = home_url( 'user-profile' );
+    if ( $requested_redirect_to == '' ) {
+         // Non-admin users always go to account page after login if redirect_to is not set
+         $redirect_url = home_url( 'user-profile' );
+    } else {
+        $redirect_url = $requested_redirect_to;
+    }
+    
  }
 
  return wp_validate_redirect( $redirect_url, home_url() );

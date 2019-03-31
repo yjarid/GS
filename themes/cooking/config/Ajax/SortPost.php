@@ -4,7 +4,7 @@
  */
 namespace GS\Ajax;
 
- 
+ use GS\Data\PostData;
 
 
 class SortPost 
@@ -23,41 +23,22 @@ if( defined( 'DOING_AJAX' ) && DOING_AJAX) {
   $term = $_POST['term'];
   $tax = $_POST['tax'];
 
-  $args = array();
-
+  $taxQuery = array(
+    array( 'taxonomy' => $tax,   'field' => 'name',  'terms'  => $term )
+   );
+  
   if($sortBy == 'date' ) {
-    $args = array('post_status' => 'publish',
-                 'post_type' => 'recipe',
-                 'posts_per_page' => 5,
-                 'tax_query' => array(
-                      array(
-                      'taxonomy' => $tax,
-                      'field'    => 'name',
-                      'terms'    => $term,
-                      )
-                    )
-                  );
+
+    $sort = PostData::getPost(1, '', [], null, $taxQuery  ) ;
   }
   else if ($sortBy && $sortBy != 'date') {
-    $args = array('post_status' => 'publish',
-                 'post_type' => 'recipe',
-                 'posts_per_page' => 5,
-                 'meta_key' => $sortBy,
-                 'orderby' => 'meta_value_num',
-                 'order' => 'DESC',
-                 'tax_query' => array(
-                      array(
-                      'taxonomy' => $tax,
-                      'field'    => 'name',
-                      'terms'    => $term,
-                      )
-                    )
-                  );
+
+    $sort = PostData::getPost(1, $sortBy, [], null, $taxQuery  ) ; 
   }
 
 
 
-    $sort = new \WP_Query( $args );
+    
 
         if( $sort->have_posts() ) {
           ob_start();

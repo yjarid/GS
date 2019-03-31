@@ -2,21 +2,19 @@
 <?php get_header();
 
 use GS\DisplayFunc;
-
+$date = DisplayFunc::getDate();
 ?>
 
 <div class="container ">
 
+<div class="postNewRecipeTop">
+  <h3 class="postNewRecipeTitle"><?php echo single_term_title(  '',  true ); ?></h3>
+  <p class="postNewRecipeDescription"> 
+    <?php echo get_the_archive_description();?>
+  </p>
+ </div>
 
-<?php
-echo get_the_archive_title();
-echo get_the_archive_description();
-
- $date = DisplayFunc::getDate();
-
-?>
-
-
+ 
   <div class="cardTop">
     <div  class="cardsTitle">Recipes</div>
     <div class="sortedBY">
@@ -25,6 +23,7 @@ echo get_the_archive_description();
             <select name="sortBy" id="sortBy" class="toSort2" data-tax="<?php echo get_query_var('taxonomy'); ?>" data-term="<?php echo get_query_var('term'); ?>">
               <option selected=""  value="date">Date</option>
               <option   value="<?php echo'post_views_'.$date['M'].'_'.$date['Y'] ?>">Views</option>
+              <option   value="<?php echo'GSRating_diff' ?>">Score</option>
             </select>
 
       </div>

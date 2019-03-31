@@ -3,6 +3,7 @@
  * this is for enqueuing Style and script and adding Theme support 
  */
 namespace GS\Ajax;
+use GS\Data\PostData;
 
  
 
@@ -21,37 +22,21 @@ class FilterPost
 
         if( defined( 'DOING_AJAX' ) && DOING_AJAX) {
 
-            $args = array('post_status' => 'publish',
-                        'post_type' => 'recipe',
-                        'posts_per_page' => 5
+          
 
-                );
-
-            $args['tax_query'] = array('relation' => 'AND');
+            $tax = array('relation' => 'AND');
 
             if(isset($_POST['meal']) && $_POST['meal']) {
-                $args['tax_query'][] =
-                array(
-                    'taxonomy' => 'meal',
-                    'field' => 'id',
-                    'terms' => $_POST['meal'] ?: ''
-                );
+               
+                $tax[] =  array( 'taxonomy' => 'meal', 'field' => 'id', 'terms' => $_POST['meal'] ?: '');
             }
 
             if(isset($_POST['ingredient']) && $_POST['ingredient']) {
-                $args['tax_query'][] =
-                array(
-                    'taxonomy' => 'ingredient',
-                    'field' => 'id',
-                    'terms' => $_POST['ingredient'] ?: ''
-                );
+
+                $tax[]  = array( 'taxonomy' => 'ingredient', 'field' => 'id', 'terms' => $_POST['ingredient'] ?: '' );
             }
 
-
-
-
-
-            $filter = new \WP_Query( $args );
+            $filter = PostData::getPost(1, $_POST['metaKey'], [], $paged, $tax ) ;
 
             if( $filter->have_posts() ) {
             ob_start();
